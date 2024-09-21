@@ -11,5 +11,20 @@ config_version=5
 [application]
 
 config/name="SuperBaldManPlatform"
+run/main_scene="res://Scenes/game_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://Global/game_manager.gd"
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "orange"
+}
+
+[layer_names]
+
+2d_physics/layer_1="Player"
