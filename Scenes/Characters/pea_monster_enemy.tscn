@@ -1,0 +1,122 @@
+[gd_scene load_steps=24 format=3 uid="uid://cajv8vgfny11m"]
+
+[ext_resource type="Script" path="res://Scenes/Characters/pea_monster_enemy.gd" id="1_pq8mr"]
+[ext_resource type="Texture2D" uid="uid://bxbriw2p6w01r" path="res://Assets/Enemies/PeaMonster/idle/frame-1.png" id="2_3hskw"]
+[ext_resource type="Texture2D" uid="uid://balievt227clr" path="res://Assets/Enemies/PeaMonster/idle/frame-2.png" id="3_eub15"]
+[ext_resource type="Texture2D" uid="uid://vugomvmpkw8c" path="res://Assets/Enemies/PeaMonster/idle/frame-3.png" id="4_babvn"]
+[ext_resource type="Texture2D" uid="uid://c6qlrqh5xejdj" path="res://Assets/Enemies/PeaMonster/idle/frame-4.png" id="5_cdok1"]
+[ext_resource type="Texture2D" uid="uid://bon1mb7pbi4vg" path="res://Assets/Enemies/PeaMonster/idle/frame-5.png" id="6_mu588"]
+[ext_resource type="Texture2D" uid="uid://c21lw06ut20hi" path="res://Assets/Enemies/PeaMonster/idle/frame-6.png" id="7_bfr1c"]
+[ext_resource type="Texture2D" uid="uid://dsdrcmcxmqres" path="res://Assets/Enemies/PeaMonster/idle/frame-7.png" id="8_qkate"]
+[ext_resource type="Texture2D" uid="uid://caip25f54venl" path="res://Assets/Enemies/PeaMonster/idle/frame-8.png" id="9_hsn8v"]
+[ext_resource type="Texture2D" uid="uid://b8tewrbubn524" path="res://Assets/Enemies/PeaMonster/walking/frame-1.png" id="10_o8msw"]
+[ext_resource type="Texture2D" uid="uid://d2rff25d5dlap" path="res://Assets/Enemies/PeaMonster/walking/frame-2.png" id="11_mr7i8"]
+[ext_resource type="Texture2D" uid="uid://pedp2ygvt8oi" path="res://Assets/Enemies/PeaMonster/walking/frame-3.png" id="12_2upcf"]
+[ext_resource type="Texture2D" uid="uid://q4lpdfprs3r5" path="res://Assets/Enemies/PeaMonster/walking/frame-4.png" id="13_jxysn"]
+[ext_resource type="Texture2D" uid="uid://cs3dwwqx7ad0k" path="res://Assets/Enemies/PeaMonster/walking/frame-5.png" id="14_1hheh"]
+[ext_resource type="Texture2D" uid="uid://ev25vj8gmdt5" path="res://Assets/Enemies/PeaMonster/walking/frame-6.png" id="15_3syst"]
+[ext_resource type="Texture2D" uid="uid://07o1e6mr7gi6" path="res://Assets/Enemies/PeaMonster/walking/frame-7.png" id="16_epati"]
+[ext_resource type="Texture2D" uid="uid://bg3div2end330" path="res://Assets/Enemies/PeaMonster/walking/frame-8.png" id="17_xipvo"]
+[ext_resource type="PackedScene" uid="uid://85wpovfy5xre" path="res://Scenes/Components/damager.tscn" id="18_tpn1j"]
+[ext_resource type="PackedScene" uid="uid://cen2fowuyh1xa" path="res://Scenes/Components/proximity_detector.tscn" id="19_h1m65"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eofpw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3hskw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_eub15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_babvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cdok1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mu588")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bfr1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qkate")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hsn8v")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_o8msw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_mr7i8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2upcf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_jxysn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_1hheh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_3syst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_epati")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_xipvo")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tp81j"]
+radius = 200.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8lpx"]
+radius = 168.19
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gk8iy"]
+radius = 488.889
+
+[node name="PeaMonsterEnemy" type="CharacterBody2D"]
+scale = Vector2(0.18, 0.18)
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_pq8mr")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_eofpw")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tp81j")
+
+[node name="Damager" parent="." instance=ExtResource("18_tpn1j")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damager"]
+shape = SubResource("CircleShape2D_x8lpx")
+debug_color = Color(0.972549, 0.133333, 0.0352941, 0.419608)
+
+[node name="ProximityDetector" parent="." instance=ExtResource("19_h1m65")]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityDetector"]
+shape = SubResource("CircleShape2D_gk8iy")
+debug_color = Color(0.57, 0.53998, 0.1197, 0.419608)
+
+[connection signal="body_entered" from="ProximityDetector" to="ProximityDetector" method="_on_body_entered"]
+[connection signal="player_entered" from="ProximityDetector" to="." method="_on_proximity_detector_player_entered"]

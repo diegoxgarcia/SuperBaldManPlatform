@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cen2fowuyh1xa"]
+
+[ext_resource type="Script" path="res://Scenes/Components/proximity_detector.gd" id="1_rqeic"]
+
+[node name="ProximityDetector" type="Area2D"]
+script = ExtResource("1_rqeic")

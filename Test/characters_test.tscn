@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://bov5uealh6dy4"]
+
+[ext_resource type="PackedScene" uid="uid://cxhdamhyb8gxs" path="res://Scenes/Characters/player.tscn" id="1_1nqa8"]
+[ext_resource type="PackedScene" uid="uid://wvuen8h80w5a" path="res://Scenes/Characters/monster_enemy.tscn" id="2_swwnw"]
+[ext_resource type="PackedScene" uid="uid://cajv8vgfny11m" path="res://Scenes/Characters/pea_monster_enemy.tscn" id="3_agtcb"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_cm2o7"]
+size = Vector2(1000, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shbw6"]
+size = Vector2(1008, 16)
+
+[node name="CharactersTest" type="Node2D"]
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(408, 528)
+collision_layer = 8
+collision_mask = 3
+metadata/_edit_group_ = true
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform"]
+position = Vector2(2.86102e-06, 8.13603e-06)
+scale = Vector2(1.008, 1.06667)
+mesh = SubResource("QuadMesh_cm2o7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+shape = SubResource("RectangleShape2D_shbw6")
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(880, 672)
+collision_layer = 8
+collision_mask = 3
+metadata/_edit_group_ = true
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform2"]
+position = Vector2(2.86102e-06, 8.13603e-06)
+scale = Vector2(1.008, 1.06667)
+mesh = SubResource("QuadMesh_cm2o7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+shape = SubResource("RectangleShape2D_shbw6")
+
+[node name="Player" parent="." instance=ExtResource("1_1nqa8")]
+position = Vector2(280, 392)
+
+[node name="MonsterEnemy" parent="." instance=ExtResource("2_swwnw")]
+position = Vector2(1336, 416)
+
+[node name="PeaMonsterEnemy" parent="." instance=ExtResource("3_agtcb")]
+position = Vector2(640, 352)

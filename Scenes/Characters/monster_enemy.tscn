@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://wvuen8h80w5a"]
+
+[ext_resource type="Script" path="res://Scenes/Characters/monster_enemy.gd" id="1_ltvid"]
+[ext_resource type="Texture2D" uid="uid://y051edi3d8pt" path="res://Assets/Enemies/Monster/got hit/frame-1.png" id="1_q3duu"]
+[ext_resource type="Texture2D" uid="uid://dadr5lqge0dcd" path="res://Assets/Enemies/Monster/got hit/frame-2.png" id="2_xw54l"]
+[ext_resource type="Texture2D" uid="uid://ex08w3eyfty2" path="res://Assets/Enemies/Monster/Idle/frame-1.png" id="3_y5upy"]
+[ext_resource type="Texture2D" uid="uid://b2gkhl0eqh1mf" path="res://Assets/Enemies/Monster/Idle/frame-2.png" id="4_dtj2o"]
+[ext_resource type="PackedScene" uid="uid://85wpovfy5xre" path="res://Scenes/Components/damager.tscn" id="5_3sjvi"]
+[ext_resource type="PackedScene" uid="uid://cen2fowuyh1xa" path="res://Scenes/Components/proximity_detector.tscn" id="7_h7min"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g77xn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_q3duu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xw54l")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_y5upy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dtj2o")
+}],
+"loop": true,
+"name": &"walkidle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxhlj"]
+size = Vector2(533.333, 586.667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0umh"]
+size = Vector2(528, 638)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8jkcq"]
+radius = 1813.33
+
+[node name="MonsterEnemy" type="CharacterBody2D"]
+scale = Vector2(0.15, 0.15)
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_ltvid")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g77xn")
+animation = &"walkidle"
+autoplay = "walkidle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.52588e-05, 26.6667)
+shape = SubResource("RectangleShape2D_uxhlj")
+debug_color = Color(0.862745, 1, 0.454902, 0.513726)
+
+[node name="Damager" parent="." instance=ExtResource("5_3sjvi")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damager"]
+position = Vector2(5, 12)
+shape = SubResource("RectangleShape2D_p0umh")
+debug_color = Color(0.870588, 0.160784, 1, 0.419608)
+
+[node name="ProximityDetector" parent="." instance=ExtResource("7_h7min")]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityDetector"]
+shape = SubResource("CircleShape2D_8jkcq")
+
+[connection signal="body_entered" from="ProximityDetector" to="ProximityDetector" method="_on_body_entered"]
+[connection signal="player_entered" from="ProximityDetector" to="." method="_on_proximity_detector_player_entered"]

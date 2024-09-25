@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://85wpovfy5xre"]
+
+[ext_resource type="Script" path="res://Scenes/Components/damager.gd" id="1_uf7v4"]
+
+[node name="Damager" type="Area2D"]
+script = ExtResource("1_uf7v4")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
