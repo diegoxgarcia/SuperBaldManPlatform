@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://Scenes/Components/damager.gd" id="1_uf7v4"]
 
 [node name="Damager" type="Area2D"]
+collision_layer = 4
+collision_mask = 16
 script = ExtResource("1_uf7v4")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SuperBaldManPlatform"
-run/main_scene="res://Scenes/game_scene.tscn"
+run/main_scene="res://Test/characters_test.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,7 @@ GameManager="*res://Global/game_manager.gd"
 
 folder_colors={
 "res://Assets/": "orange",
+"res://Global/": "teal",
 "res://Test/": "yellow"
 }
 
@@ -40,6 +41,6 @@ attack={
 2d_render/layer_2="Enemy"
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemy"
-2d_physics/layer_3="Proximity Detector"
+2d_physics/layer_3="Damager"
 2d_physics/layer_4="Floor"
 2d_physics/layer_5="Weapon"

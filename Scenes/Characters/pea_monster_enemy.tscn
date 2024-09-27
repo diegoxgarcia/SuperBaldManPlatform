@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://cajv8vgfny11m"]
+[gd_scene load_steps=25 format=3 uid="uid://cajv8vgfny11m"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/pea_monster_enemy.gd" id="1_pq8mr"]
 [ext_resource type="Texture2D" uid="uid://bxbriw2p6w01r" path="res://Assets/Enemies/PeaMonster/idle/frame-1.png" id="2_3hskw"]
+[ext_resource type="Script" path="res://Scenes/Resources/enemy_data.gd" id="2_y5h43"]
 [ext_resource type="Texture2D" uid="uid://balievt227clr" path="res://Assets/Enemies/PeaMonster/idle/frame-2.png" id="3_eub15"]
 [ext_resource type="Texture2D" uid="uid://vugomvmpkw8c" path="res://Assets/Enemies/PeaMonster/idle/frame-3.png" id="4_babvn"]
 [ext_resource type="Texture2D" uid="uid://c6qlrqh5xejdj" path="res://Assets/Enemies/PeaMonster/idle/frame-4.png" id="5_cdok1"]
@@ -18,7 +19,14 @@
 [ext_resource type="Texture2D" uid="uid://07o1e6mr7gi6" path="res://Assets/Enemies/PeaMonster/walking/frame-7.png" id="16_epati"]
 [ext_resource type="Texture2D" uid="uid://bg3div2end330" path="res://Assets/Enemies/PeaMonster/walking/frame-8.png" id="17_xipvo"]
 [ext_resource type="PackedScene" uid="uid://85wpovfy5xre" path="res://Scenes/Components/damager.tscn" id="18_tpn1j"]
-[ext_resource type="PackedScene" uid="uid://cen2fowuyh1xa" path="res://Scenes/Components/proximity_detector.tscn" id="19_h1m65"]
+[ext_resource type="PackedScene" uid="uid://ddbye016jmi7s" path="res://Scenes/Components/proximity_player_detector.tscn" id="21_hhhtw"]
+
+[sub_resource type="Resource" id="Resource_pqt3i"]
+script = ExtResource("2_y5h43")
+speed = 200.0
+jump_velocity = -400.0
+health = 100
+target_position = 1000.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eofpw"]
 animations = [{
@@ -77,46 +85,44 @@ animations = [{
 "texture": ExtResource("17_xipvo")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"walkidle",
 "speed": 15.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_tp81j"]
-radius = 200.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x8lpx"]
 radius = 168.19
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gk8iy"]
-radius = 488.889
+[sub_resource type="CircleShape2D" id="CircleShape2D_tp81j"]
+radius = 200.0
 
 [node name="PeaMonsterEnemy" type="CharacterBody2D"]
 scale = Vector2(0.18, 0.18)
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_pq8mr")
+enemy_data = SubResource("Resource_pqt3i")
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Visual" type="Node2D" parent="."]
+rotation = -1.5708
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual"]
+rotation = 1.5708
+scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_eofpw")
-animation = &"idle"
+animation = &"walkidle"
 autoplay = "idle"
+
+[node name="Damager" parent="Visual" instance=ExtResource("18_tpn1j")]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/Damager"]
+shape = SubResource("CircleShape2D_x8lpx")
+debug_color = Color(0.972549, 0.133333, 0.0352941, 0.419608)
+
+[node name="ProximityPlayerDetector" parent="Visual" instance=ExtResource("21_hhhtw")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tp81j")
 
-[node name="Damager" parent="." instance=ExtResource("18_tpn1j")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Damager"]
-shape = SubResource("CircleShape2D_x8lpx")
-debug_color = Color(0.972549, 0.133333, 0.0352941, 0.419608)
-
-[node name="ProximityDetector" parent="." instance=ExtResource("19_h1m65")]
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityDetector"]
-shape = SubResource("CircleShape2D_gk8iy")
-debug_color = Color(0.57, 0.53998, 0.1197, 0.419608)
-
-[connection signal="body_entered" from="ProximityDetector" to="ProximityDetector" method="_on_body_entered"]
-[connection signal="player_entered" from="ProximityDetector" to="." method="_on_proximity_detector_player_entered"]
+[connection signal="enemy_damaged" from="Visual/Damager" to="." method="_on_damager_enemy_damaged"]

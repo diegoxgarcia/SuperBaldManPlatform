@@ -1,12 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://wvuen8h80w5a"]
+[gd_scene load_steps=15 format=3 uid="uid://wvuen8h80w5a"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/monster_enemy.gd" id="1_ltvid"]
 [ext_resource type="Texture2D" uid="uid://y051edi3d8pt" path="res://Assets/Enemies/Monster/got hit/frame-1.png" id="1_q3duu"]
+[ext_resource type="Script" path="res://Scenes/Resources/enemy_data.gd" id="2_52gay"]
 [ext_resource type="Texture2D" uid="uid://dadr5lqge0dcd" path="res://Assets/Enemies/Monster/got hit/frame-2.png" id="2_xw54l"]
 [ext_resource type="Texture2D" uid="uid://ex08w3eyfty2" path="res://Assets/Enemies/Monster/Idle/frame-1.png" id="3_y5upy"]
 [ext_resource type="Texture2D" uid="uid://b2gkhl0eqh1mf" path="res://Assets/Enemies/Monster/Idle/frame-2.png" id="4_dtj2o"]
 [ext_resource type="PackedScene" uid="uid://85wpovfy5xre" path="res://Scenes/Components/damager.tscn" id="5_3sjvi"]
-[ext_resource type="PackedScene" uid="uid://cen2fowuyh1xa" path="res://Scenes/Components/proximity_detector.tscn" id="7_h7min"]
+[ext_resource type="PackedScene" uid="uid://ddbye016jmi7s" path="res://Scenes/Components/proximity_player_detector.tscn" id="8_kgfay"]
+
+[sub_resource type="Resource" id="Resource_qld0x"]
+script = ExtResource("2_52gay")
+speed = 100.0
+jump_velocity = -400.0
+health = 100
+target_position = 1200.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g77xn"]
 animations = [{
@@ -33,44 +41,78 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxhlj"]
-size = Vector2(533.333, 586.667)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0umh"]
 size = Vector2(528, 638)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8jkcq"]
-radius = 1813.33
+[sub_resource type="Animation" id="Animation_iiyyu"]
+resource_name = "hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(200, 0), Vector2(250, 0), Vector2(260, 0), Vector2(100, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-1.5708, 1.5708, 3.14159, 4.71239, -1.5708]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ua2t"]
+_data = {
+"hit": SubResource("Animation_iiyyu")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxhlj"]
+size = Vector2(533.333, 586.667)
 
 [node name="MonsterEnemy" type="CharacterBody2D"]
 scale = Vector2(0.15, 0.15)
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_ltvid")
+enemy_data = SubResource("Resource_qld0x")
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Visual" type="Node2D" parent="."]
+rotation = -1.5708
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual"]
 sprite_frames = SubResource("SpriteFrames_g77xn")
 animation = &"walkidle"
 autoplay = "walkidle"
+
+[node name="Damager" parent="Visual" instance=ExtResource("5_3sjvi")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/Damager"]
+position = Vector2(5, 12)
+shape = SubResource("RectangleShape2D_p0umh")
+debug_color = Color(0.870588, 0.160784, 1, 0.419608)
+
+[node name="ProximityPlayerDetector" parent="Visual" instance=ExtResource("8_kgfay")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
+libraries = {
+"": SubResource("AnimationLibrary_7ua2t")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.52588e-05, 26.6667)
 shape = SubResource("RectangleShape2D_uxhlj")
 debug_color = Color(0.862745, 1, 0.454902, 0.513726)
 
-[node name="Damager" parent="." instance=ExtResource("5_3sjvi")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Damager"]
-position = Vector2(5, 12)
-shape = SubResource("RectangleShape2D_p0umh")
-debug_color = Color(0.870588, 0.160784, 1, 0.419608)
-
-[node name="ProximityDetector" parent="." instance=ExtResource("7_h7min")]
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityDetector"]
-shape = SubResource("CircleShape2D_8jkcq")
-
-[connection signal="body_entered" from="ProximityDetector" to="ProximityDetector" method="_on_body_entered"]
-[connection signal="player_entered" from="ProximityDetector" to="." method="_on_proximity_detector_player_entered"]
+[connection signal="enemy_damaged" from="Visual/Damager" to="." method="_on_damager_enemy_damaged"]

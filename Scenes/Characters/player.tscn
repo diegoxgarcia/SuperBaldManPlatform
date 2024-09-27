@@ -1,6 +1,7 @@
-[gd_scene load_steps=46 format=3 uid="uid://cxhdamhyb8gxs"]
+[gd_scene load_steps=48 format=3 uid="uid://cxhdamhyb8gxs"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/player.gd" id="1_u3ie3"]
+[ext_resource type="Script" path="res://Scenes/Resources/player_data.gd" id="2_34bvw"]
 [ext_resource type="Texture2D" uid="uid://bijq8f48erdlj" path="res://Assets/Player/01-Idle/PS_BALD GUY_Idle_000.png" id="17_0s302"]
 [ext_resource type="Texture2D" uid="uid://da8wvovn50t84" path="res://Assets/Player/01-Idle/PS_BALD GUY_Idle_001.png" id="18_7pxjf"]
 [ext_resource type="Texture2D" uid="uid://cy7c2mfh4wrnd" path="res://Assets/Player/01-Idle/PS_BALD GUY_Idle_002.png" id="19_lfqts"]
@@ -36,8 +37,11 @@
 [ext_resource type="PackedScene" uid="uid://cjx4mqq877q68" path="res://Scenes/Components/collecter.tscn" id="57_w1bxf"]
 [ext_resource type="PackedScene" uid="uid://85wpovfy5xre" path="res://Scenes/Components/damager.tscn" id="58_fc7mf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_csixw"]
-size = Vector2(280, 473)
+[sub_resource type="Resource" id="Resource_n2jln"]
+script = ExtResource("2_34bvw")
+speed = 400.0
+jump_velocity = -520.0
+health = 100
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qkw2u"]
 radius = 124.0
@@ -54,7 +58,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Visual/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -69,7 +73,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Visual/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -81,7 +85,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WeaponHandlerLeft:position")
+tracks/1/path = NodePath("Visual/WeaponHandler:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -90,18 +94,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(-444, 72)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("WeaponHandlerRight:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(152, 72)]
-}
 
 [sub_resource type="Animation" id="Animation_fo63x"]
 resource_name = "run"
@@ -109,7 +101,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Visual/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -125,7 +117,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Visual/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -141,7 +133,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Visual/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -157,7 +149,7 @@ length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Visual/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -169,7 +161,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WeaponHandlerLeft:position")
+tracks/1/path = NodePath("Visual/WeaponHandler:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -177,18 +169,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-92, 72), Vector2(-124, 72), Vector2(-156, 72), Vector2(-188, 72), Vector2(-212, 72), Vector2(-212, 40), Vector2(-212, 40), Vector2(-196, 96)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("WeaponHandlerRight:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(88, 72), Vector2(120, 72), Vector2(152, 72), Vector2(152, 72), Vector2(196, 72), Vector2(184, 24), Vector2(216, 8), Vector2(212, 104)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fbhrj"]
@@ -201,10 +181,14 @@ _data = {
 "run": SubResource("Animation_fo63x")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csixw"]
+size = Vector2(280, 473)
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
 collision_mask = 14
 script = ExtResource("1_u3ie3")
+player_data = SubResource("Resource_n2jln")
 metadata/_edit_group_ = true
 
 [node name="StateMachine" type="Node" parent="."]
@@ -217,40 +201,40 @@ metadata/_edit_group_ = true
 
 [node name="attack" type="Node" parent="StateMachine"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual"]
 texture = ExtResource("17_0s302")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-41, -13.5)
-shape = SubResource("RectangleShape2D_csixw")
+[node name="Collecter" parent="Visual" instance=ExtResource("57_w1bxf")]
 
-[node name="Collecter" parent="." instance=ExtResource("57_w1bxf")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collecter"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/Collecter"]
 position = Vector2(-40, -16)
 shape = SubResource("CapsuleShape2D_qkw2u")
 debug_color = Color(0.92549, 0.6, 0.701961, 0.419608)
 
-[node name="Damager" parent="." instance=ExtResource("58_fc7mf")]
+[node name="Damager" parent="Visual" instance=ExtResource("58_fc7mf")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Damager"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/Damager"]
 position = Vector2(-40, -16)
 shape = SubResource("CapsuleShape2D_soj2v")
 debug_color = Color(0.947058, 5.39064e-06, 0.584886, 0.42)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="WeaponHandlerLeft" type="Node2D" parent="."]
-position = Vector2(-444, 72)
-
-[node name="WeaponHandlerRight" type="Node2D" parent="."]
-position = Vector2(152, 72)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_fbhrj")
 }
 autoplay = "idle"
 
-[connection signal="player_collected" from="Collecter" to="." method="_on_collecter_player_collected"]
-[connection signal="player_damaged" from="Damager" to="." method="_on_damager_player_damaged"]
+[node name="WeaponHandler" type="Node2D" parent="Visual"]
+position = Vector2(-444, 72)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-41, -13.5)
+shape = SubResource("RectangleShape2D_csixw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="player_collected" from="Visual/Collecter" to="." method="_on_collecter_player_collected"]
+[connection signal="player_damaged" from="Visual/Damager" to="." method="_on_damager_player_damaged"]
