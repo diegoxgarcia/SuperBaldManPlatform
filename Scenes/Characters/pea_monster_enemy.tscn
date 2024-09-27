@@ -104,10 +104,8 @@ enemy_data = SubResource("Resource_pqt3i")
 metadata/_edit_group_ = true
 
 [node name="Visual" type="Node2D" parent="."]
-rotation = -1.5708
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual"]
-rotation = 1.5708
 scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_eofpw")
 animation = &"walkidle"

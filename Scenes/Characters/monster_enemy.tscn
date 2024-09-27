@@ -89,7 +89,6 @@ enemy_data = SubResource("Resource_qld0x")
 metadata/_edit_group_ = true
 
 [node name="Visual" type="Node2D" parent="."]
-rotation = -1.5708
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual"]
 sprite_frames = SubResource("SpriteFrames_g77xn")
