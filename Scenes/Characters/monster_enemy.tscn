@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://wvuen8h80w5a"]
+[gd_scene load_steps=20 format=3 uid="uid://wvuen8h80w5a"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/monster_enemy.gd" id="1_ltvid"]
 [ext_resource type="Texture2D" uid="uid://y051edi3d8pt" path="res://Assets/Enemies/Monster/got hit/frame-1.png" id="1_q3duu"]
@@ -111,6 +111,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(-1.52588e-05, 26.6667)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_bs87b"]
 resource_name = "hit_back_backwards"
@@ -159,6 +171,27 @@ _data = {
 "hit_back_backwards": SubResource("Animation_bs87b")
 }
 
+[sub_resource type="Gradient" id="Gradient_8m7vf"]
+offsets = PackedFloat32Array(0, 0.287411, 0.608076, 0.916865)
+colors = PackedColorArray(0.0823529, 0.752941, 1, 1, 0.27451, 0.647059, 0.94902, 1, 0, 1, 1, 1, 0.407843, 1, 1, 0.568627)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7rkl1"]
+gradient = SubResource("Gradient_8m7vf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_58jc6"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 450.0
+angle_min = -430.2
+angle_max = 10.5
+spread = 87.632
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 42.08
+radial_accel_max = 100.0
+scale_over_velocity_min = 744.99
+scale_over_velocity_max = 925.32
+color_ramp = SubResource("GradientTexture1D_7rkl1")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxhlj"]
 size = Vector2(533.333, 586.667)
 
@@ -191,6 +224,14 @@ libraries = {
 "": SubResource("AnimationLibrary_l1tuw")
 }
 
+[node name="DeadParticles" type="GPUParticles2D" parent="Visual"]
+emitting = false
+amount = 15000
+process_material = SubResource("ParticleProcessMaterial_58jc6")
+lifetime = 0.3
+one_shot = true
+randomness = 1.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.52588e-05, 26.6667)
 shape = SubResource("RectangleShape2D_uxhlj")
@@ -215,3 +256,5 @@ grow_horizontal = 2
 grow_vertical = 2
 fill_mode = 1
 show_percentage = false
+
+[connection signal="finished" from="Visual/DeadParticles" to="." method="_on_dead_particles_finished"]

@@ -1,13 +1,64 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqlucfqislgns"]
+[gd_scene load_steps=17 format=3 uid="uid://dqlucfqislgns"]
 
 [ext_resource type="Script" path="res://Scenes/Weapons/mic_weapon.gd" id="1_sflhn"]
 [ext_resource type="Texture2D" uid="uid://bumuqcll7eby7" path="res://Assets/Weapons/mic.png" id="2_bp361"]
 [ext_resource type="Script" path="res://Scenes/Resources/weapon_data.gd" id="2_phikc"]
+[ext_resource type="Texture2D" uid="uid://detudd0lf5ekv" path="res://Assets/Particles/PhysicalImpact01LtBlue 2.png" id="4_5ewu2"]
 
 [sub_resource type="Resource" id="Resource_rjnh5"]
 script = ExtResource("2_phikc")
 damage = 5
 velocity = 0.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oecs8"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 9.83
+gravity = Vector3(0, -50, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23y64"]
+atlas = ExtResource("4_5ewu2")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m88ur"]
+atlas = ExtResource("4_5ewu2")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15mv4"]
+atlas = ExtResource("4_5ewu2")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6w2ee"]
+atlas = ExtResource("4_5ewu2")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjlmh"]
+atlas = ExtResource("4_5ewu2")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_60yb6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23y64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m88ur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15mv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6w2ee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjlmh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hfsif"]
 radius = 13.0
@@ -112,6 +163,19 @@ position = Vector2(1.51764, 1.75345)
 rotation = -1.8326
 texture = ExtResource("2_bp361")
 offset = Vector2(2.75345, -87.5176)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D"]
+position = Vector2(21.3506, -165.636)
+rotation = 1.8326
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_oecs8")
+lifetime = 0.3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D/GPUParticles2D"]
+sprite_frames = SubResource("SpriteFrames_60yb6")
+autoplay = "default"
+frame = 2
+frame_progress = 0.562177
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-84.5, 21.5)

@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var animation_player = $Visual/AnimationPlayer
 @onready var health_bar = $Control/HealthBar
 var player : Player
+@onready var dead_particles = $Visual/DeadParticles
 
 func _ready():
 	$Visual/Damager.enemy_damaged.connect(_on_damager_enemy_damaged)
@@ -21,6 +22,7 @@ func _physics_process(delta):
 	direction_flip()
 	follow_player()
 	move_and_slide()
+	pass
 	
 func _process(delta):
 	player = proximity_player_detector.check_player_collide()
@@ -29,18 +31,21 @@ func _process(delta):
 func fall(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	pass
 		
 func direction_flip():
 	if velocity.x > 0:
 		visual.scale.x = -1
 	elif velocity.x < 0:
 		visual.scale.x = 1
+	pass
 		
 func follow_player():
 	if player != null:
 		velocity = Vector2(player.global_position.x - global_position.x, player.global_position.y).normalized() * enemy_data.speed
-		if !animated_sprite_2d.is_playing():
+		if !animated_sprite_2d.is_playing() and enemy_data.speed > 0:
 			animated_sprite_2d.play("walkidle")
+	pass
 
 func enemy_damaged(anim_forward : String, anim_backward : String, area : Area2D):
 	enemy_data.health = enemy_data.health - (area.weapon_data.damage * enemy_data.damage_multiplier)
@@ -56,10 +61,18 @@ func enemy_damaged(anim_forward : String, anim_backward : String, area : Area2D)
 	pass
 
 func dead():
-	queue_free()
+	enemy_data.speed = 0
+	proximity_player_detector.clear_target_position()
+	dead_particles.emitting = true
 	pass
 
 func _on_damager_enemy_damaged(area):
-	animated_sprite_2d.play("hit")
-	enemy_damaged("hit_back", "hit_back_backwards", area)
+	if enemy_data.speed != 0:
+		animated_sprite_2d.play("hit")
+		enemy_damaged("hit_back", "hit_back_backwards", area)
+	pass
+
+
+func _on_dead_particles_finished():
+	queue_free()
 	pass

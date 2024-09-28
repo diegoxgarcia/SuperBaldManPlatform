@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cajv8vgfny11m"]
+[gd_scene load_steps=36 format=3 uid="uid://cajv8vgfny11m"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/pea_monster_enemy.gd" id="1_pq8mr"]
 [ext_resource type="Texture2D" uid="uid://bxbriw2p6w01r" path="res://Assets/Enemies/PeaMonster/idle/frame-1.png" id="2_3hskw"]
@@ -255,6 +255,44 @@ _data = {
 "hit_rotate_backwards": SubResource("Animation_5khga")
 }
 
+[sub_resource type="Curve" id="Curve_nptbx"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_np0nb"]
+curve = SubResource("Curve_nptbx")
+
+[sub_resource type="Gradient" id="Gradient_wdwrr"]
+offsets = PackedFloat32Array(0, 0.190476, 0.448718, 0.730769, 1)
+colors = PackedColorArray(0, 1, 0, 1, 0.190476, 1, 0.190476, 1, 0.448718, 1, 0.448718, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_utmtx"]
+gradient = SubResource("Gradient_wdwrr")
+
+[sub_resource type="Curve" id="Curve_uitu5"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mo4an"]
+curve = SubResource("Curve_uitu5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fmiet"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 200.0
+angle_curve = SubResource("CurveTexture_np0nb")
+spread = 98.377
+initial_velocity_min = 1.48
+initial_velocity_max = 298.22
+gravity = Vector3(0, -98, 0)
+damping_min = 63.799
+damping_max = 97.626
+scale_over_velocity_curve = SubResource("CurveTexture_mo4an")
+color_ramp = SubResource("GradientTexture1D_utmtx")
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_tp81j"]
 radius = 200.0
 
@@ -289,6 +327,13 @@ libraries = {
 "": SubResource("AnimationLibrary_7ua2t")
 }
 
+[node name="DeadParticles" type="GPUParticles2D" parent="Visual"]
+emitting = false
+amount = 10000
+process_material = SubResource("ParticleProcessMaterial_fmiet")
+lifetime = 0.3
+one_shot = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tp81j")
 
@@ -311,3 +356,5 @@ grow_horizontal = 2
 grow_vertical = 2
 fill_mode = 1
 show_percentage = false
+
+[connection signal="finished" from="Visual/DeadParticles" to="." method="_on_dead_particles_finished"]

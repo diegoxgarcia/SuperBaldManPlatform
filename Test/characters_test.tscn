@@ -44,7 +44,7 @@ shape = SubResource("RectangleShape2D_shbw6")
 position = Vector2(280, 392)
 
 [node name="MonsterEnemy" parent="." instance=ExtResource("2_swwnw")]
-position = Vector2(1336, 416)
+position = Vector2(912, 424)
 
 [node name="PeaMonsterEnemy" parent="." instance=ExtResource("3_agtcb")]
-position = Vector2(640, 352)
+position = Vector2(-24.0001, 360)

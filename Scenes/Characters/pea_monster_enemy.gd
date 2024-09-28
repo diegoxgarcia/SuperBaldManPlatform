@@ -19,5 +19,6 @@ func _process(delta):
 	pass	
 
 func _on_damager_enemy_damaged(area):
-	enemy_damaged("hit_rotate", "hit_rotate_backwards", area)
+	if enemy_data.speed != 0:
+		enemy_damaged("hit_rotate", "hit_rotate_backwards", area)
 	pass
