@@ -11,14 +11,13 @@ extends CharacterBody2D
 var direction
 
 var mic_scene = preload("res://Scenes/Weapons/mic_weapon.tscn")
-var new_mic
+var new_mic : Mic
 
 signal move
 
 func _ready():
 	new_mic = mic_scene.instantiate()
 	pass
-
 
 func _physics_process(delta):
 	fall(delta)
@@ -69,7 +68,6 @@ func check_move_x():
 	else: 
 		velocity.x = move_toward(velocity.x, 0, player_data.speed)
 	pass
-
 
 func _on_collecter_player_collected(area):
 	area.queue_free()

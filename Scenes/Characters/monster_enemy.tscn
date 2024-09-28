@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://wvuen8h80w5a"]
+[gd_scene load_steps=17 format=3 uid="uid://wvuen8h80w5a"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/monster_enemy.gd" id="1_ltvid"]
 [ext_resource type="Texture2D" uid="uid://y051edi3d8pt" path="res://Assets/Enemies/Monster/got hit/frame-1.png" id="1_q3duu"]
@@ -15,6 +15,7 @@ speed = 100.0
 jump_velocity = -400.0
 health = 100
 target_position = 1200.0
+damage_multiplier = 2
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g77xn"]
 animations = [{
@@ -44,8 +45,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0umh"]
 size = Vector2(528, 638)
 
-[sub_resource type="Animation" id="Animation_iiyyu"]
-resource_name = "hit"
+[sub_resource type="Animation" id="Animation_i0f16"]
+resource_name = "hit_back"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -54,27 +55,120 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0.000677586, 0.100678, 0.200678, 0.300678, 0.400678, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(200, 0), Vector2(250, 0), Vector2(260, 0), Vector2(100, 0), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(213.333, 0), Vector2(426.667, 0), Vector2(640, 0), Vector2(453.334, 0), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
+tracks/1/path = NodePath("../Control:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.499322),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [-1.5708, 1.5708, 3.14159, 4.71239, -1.5708]
+"values": [Vector2(-127.444, -469.889), Vector2(93.333, -469.889), Vector2(295.667, -469.889), Vector2(505.667, -469.889), Vector2(325.667, -469.889), Vector2(-127.444, -469.889)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.499322),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 26.667), Vector2(213.333, 26.667), Vector2(426.667, 26.667), Vector2(640, 26.667), Vector2(453.334, 26.667), Vector2(0, 26.667)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ua2t"]
+[sub_resource type="Animation" id="Animation_hiny1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Control:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-127.444, -469.889)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1.52588e-05, 26.6667)]
+}
+
+[sub_resource type="Animation" id="Animation_bs87b"]
+resource_name = "hit_back_backwards"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.000677586, 0.100678, 0.200678, 0.300678, 0.400678, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-213.333, 0), Vector2(-426.667, 0), Vector2(-640, 0), Vector2(-453.334, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Control:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.499322),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-127.444, -469.889), Vector2(-339.333, -469.889), Vector2(-559.333, -469.889), Vector2(-769.333, -469.889), Vector2(-585.667, -469.889), Vector2(-127.444, -469.889)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.499322),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 26.667), Vector2(-213.333, 26.667), Vector2(-426.667, 26.667), Vector2(-640, 26.667), Vector2(-453.334, 26.667), Vector2(0, 26.667)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l1tuw"]
 _data = {
-"hit": SubResource("Animation_iiyyu")
+"RESET": SubResource("Animation_hiny1"),
+"hit_back": SubResource("Animation_i0f16"),
+"hit_back_backwards": SubResource("Animation_bs87b")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxhlj"]
@@ -106,7 +200,7 @@ debug_color = Color(0.870588, 0.160784, 1, 0.419608)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
 libraries = {
-"": SubResource("AnimationLibrary_7ua2t")
+"": SubResource("AnimationLibrary_l1tuw")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -114,4 +208,22 @@ position = Vector2(-1.52588e-05, 26.6667)
 shape = SubResource("RectangleShape2D_uxhlj")
 debug_color = Color(0.862745, 1, 0.454902, 0.513726)
 
-[connection signal="enemy_damaged" from="Visual/Damager" to="." method="_on_damager_enemy_damaged"]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -127.444
+offset_top = -469.889
+offset_right = 138.556
+offset_bottom = -429.889
+
+[node name="HealthBar" type="ProgressBar" parent="Control"]
+modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 1
+show_percentage = false

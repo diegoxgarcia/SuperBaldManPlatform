@@ -182,7 +182,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csixw"]
-size = Vector2(280, 473)
+size = Vector2(288, 473)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
@@ -204,9 +204,11 @@ metadata/_edit_group_ = true
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual"]
+position = Vector2(56, 0)
 texture = ExtResource("17_0s302")
 
 [node name="Collecter" parent="Visual" instance=ExtResource("57_w1bxf")]
+position = Vector2(44, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/Collecter"]
 position = Vector2(-40, -16)
@@ -214,6 +216,7 @@ shape = SubResource("CapsuleShape2D_qkw2u")
 debug_color = Color(0.92549, 0.6, 0.701961, 0.419608)
 
 [node name="Damager" parent="Visual" instance=ExtResource("58_fc7mf")]
+position = Vector2(44, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/Damager"]
 position = Vector2(-40, -16)
@@ -231,10 +234,11 @@ autoplay = "idle"
 position = Vector2(-444, 72)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-41, -13.5)
+position = Vector2(12, -13.5)
 shape = SubResource("RectangleShape2D_csixw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
 
 [connection signal="player_collected" from="Visual/Collecter" to="." method="_on_collecter_player_collected"]
 [connection signal="player_damaged" from="Visual/Damager" to="." method="_on_damager_player_damaged"]

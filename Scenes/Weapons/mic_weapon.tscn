@@ -1,7 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqlucfqislgns"]
+[gd_scene load_steps=9 format=3 uid="uid://dqlucfqislgns"]
 
 [ext_resource type="Script" path="res://Scenes/Weapons/mic_weapon.gd" id="1_sflhn"]
 [ext_resource type="Texture2D" uid="uid://bumuqcll7eby7" path="res://Assets/Weapons/mic.png" id="2_bp361"]
+[ext_resource type="Script" path="res://Scenes/Resources/weapon_data.gd" id="2_phikc"]
+
+[sub_resource type="Resource" id="Resource_rjnh5"]
+script = ExtResource("2_phikc")
+damage = 5
+velocity = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hfsif"]
 radius = 13.0
@@ -94,10 +100,12 @@ _data = {
 }
 
 [node name="MicWeapon" type="Area2D"]
+position = Vector2(24, 0)
 scale = Vector2(2, 2)
 collision_layer = 16
-collision_mask = 2
+collision_mask = 4
 script = ExtResource("1_sflhn")
+weapon_data = SubResource("Resource_rjnh5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.51764, 1.75345)
