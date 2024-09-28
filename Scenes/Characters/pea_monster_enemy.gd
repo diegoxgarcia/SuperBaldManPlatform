@@ -12,6 +12,7 @@ func _physics_process(delta):
 	follow_player()
 	direction_flip()
 	move_and_slide()
+	pass
 	
 func _process(delta):
 	player = proximity_player_detector.check_player_collide()
