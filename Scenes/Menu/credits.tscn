@@ -1,0 +1,120 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4bpmr3x5tu34"]
+
+[ext_resource type="Script" path="res://Scenes/Menu/credits.gd" id="1_kqaeo"]
+[ext_resource type="FontFile" uid="uid://bfgv1ni2bb3w2" path="res://Assets/Fonts/kenpixel_blocks.ttf" id="1_kx2v6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2edxu"]
+font = ExtResource("1_kx2v6")
+font_size = 60
+
+[sub_resource type="Gradient" id="Gradient_px41v"]
+offsets = PackedFloat32Array(0, 0.282392, 0.539867, 0.775748, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.849277, 0.211389, 0, 1, 0.901961, 0.772549, 0.356863, 1, 0.168627, 0.203922, 0.686275, 0.635294, 0.164706, 0.235294, 1, 0.219608)
+
+[sub_resource type="Animation" id="Animation_y6r7v"]
+resource_name = "slide_up_credits"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 649), Vector2(0, -191)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(10),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_back_to_main_menu"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label/fire")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ub1lm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 649)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jblbr"]
+_data = {
+"RESET": SubResource("Animation_ub1lm"),
+"slide_up_credits": SubResource("Animation_y6r7v")
+}
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kqaeo")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Created By
+Diego J. Garcia"
+label_settings = SubResource("LabelSettings_2edxu")
+horizontal_alignment = 1
+
+[node name="fire" type="CPUParticles2D" parent="Label"]
+position = Vector2(576, 167)
+amount = 20000
+lifetime = 0.5
+speed_scale = 0.5
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(300, 0.5)
+radial_accel_min = -50.0
+radial_accel_max = -40.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_px41v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jblbr")
+}
