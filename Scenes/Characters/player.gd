@@ -35,7 +35,7 @@ func fall(delta):
 	pass
 		
 func check_jump():
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = player_data.jump_velocity
 		animation_player.play("jump")
 	pass
@@ -55,7 +55,7 @@ func check_idle():
 	pass
 
 func check_move_x():
-	direction = Input.get_axis("ui_left", "ui_right")
+	direction = Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * player_data.speed
 		if is_on_floor():

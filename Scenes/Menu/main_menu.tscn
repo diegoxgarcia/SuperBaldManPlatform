@@ -17,21 +17,6 @@ emission_shape = 3
 emission_box_extents = Vector3(290.06, 1, 1)
 gravity = Vector3(0, 98, 0)
 
-[sub_resource type="Animation" id="Animation_wpb8a"]
-resource_name = "title_anim"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.5, 0.6, 0.733333, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(280, 88), Vector2(462.5, 88), Vector2(180, 88), Vector2(380, 88), Vector2(254.5, 88), Vector2(366.5, 88), Vector2(334.5, 88), Vector2(281, 88)]
-}
-
 [sub_resource type="Animation" id="Animation_fe0i5"]
 length = 0.001
 tracks/0/type = "value"
@@ -45,6 +30,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(334.5, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_wpb8a"]
+resource_name = "title_anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.6, 0.733333, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(280, 88), Vector2(462.5, 88), Vector2(180, 88), Vector2(380, 88), Vector2(254.5, 88), Vector2(366.5, 88), Vector2(334.5, 88), Vector2(281, 88)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ifnvk"]
@@ -77,10 +77,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -295.0
-offset_top = 88.0
-offset_right = 295.0
-offset_bottom = 151.0
+offset_left = -241.5
+offset_top = 64.0
+offset_right = 348.5
+offset_bottom = 127.0
 grow_horizontal = 2
 text = "Super Bald Man"
 label_settings = SubResource("LabelSettings_3no7f")
