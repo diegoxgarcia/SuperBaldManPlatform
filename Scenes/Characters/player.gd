@@ -78,5 +78,6 @@ func _on_collecter_player_collected(area):
 
 func _on_damager_player_damaged(body):
 	animation_player.play("hurt")
+	Input.start_joy_vibration(0, 0.5, 0.5, 0.3)
 	print_debug("Enemigo daña: " + str(body))
 	pass
