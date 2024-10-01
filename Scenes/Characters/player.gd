@@ -77,5 +77,6 @@ func _on_collecter_player_collected(area):
 
 
 func _on_damager_player_damaged(body):
+	animation_player.play("hurt")
 	print_debug("Enemigo daña: " + str(body))
 	pass
