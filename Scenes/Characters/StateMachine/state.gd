@@ -1,19 +1,16 @@
 class_name State
 extends Node
 
-var state_machine = null
-
-func state_input(_event : InputEvent):
+signal transitioned
+	
+func physics_update(delta : float):
 	pass
 	
-func state_process(delta):
+func update(delta : float):
 	pass
 	
-func state_physics_process(delta):
-	pass
-	
-func state_enter_state(msg := {}):
+func enter():
 	pass
 
-func state_exit():
+func exit():
 	pass
