@@ -76,5 +76,6 @@ func _on_collecter_player_collected(area):
 	pass
 
 
-func _on_damager_player_damaged():
-	pass # Replace with function body.
+func _on_damager_player_damaged(body):
+	print_debug("Enemigo daña: " + str(body))
+	pass

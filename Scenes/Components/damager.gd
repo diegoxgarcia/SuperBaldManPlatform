@@ -5,7 +5,7 @@ signal enemy_damaged(area : Area2D)
 
 
 func _on_body_entered(body):
-	player_damaged.emit() # TODO enviar el damage dependiendo del enemigo que entra
+	player_damaged.emit(body) 
 	pass
 
 
