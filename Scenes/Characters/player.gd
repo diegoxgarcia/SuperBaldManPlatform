@@ -81,3 +81,9 @@ func _on_damager_player_damaged(body):
 	Input.start_joy_vibration(0, 0.5, 0.5, 0.3)
 	print_debug("Enemigo daña: " + str(body))
 	pass
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if animation_player == "dead":
+		#set_physics_process(false)
+		pass # Replace with function body.
