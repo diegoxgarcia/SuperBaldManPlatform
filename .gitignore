@@ -1,3 +1,15 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+export_presets.cfg
+Build/Html/SuperBaldManPlatform.wasm
+Build/Html/SuperBaldManPlatform.png.import
+Build/Html/SuperBaldManPlatform.png
+Build/Html/SuperBaldManPlatform.pck
+Build/Html/SuperBaldManPlatform.js
+Build/Html/SuperBaldManPlatform.icon.png.import
+Build/Html/SuperBaldManPlatform.icon.png
+Build/Html/SuperBaldManPlatform.html
+Build/Html/SuperBaldManPlatform.audio.worklet.js
+Build/Html/SuperBaldManPlatform.apple-touch-icon.png.import
+Build/Html/SuperBaldManPlatform.apple-touch-icon.png

@@ -20,11 +20,11 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	fall(delta)
-	check_jump()
-	check_attack()
-	check_idle()
-	check_move_x()
+	#fall(delta)
+	#check_jump()
+	#check_attack()
+	#check_idle()
+	#check_move_x()
 	move_and_slide()
 	
 func fall(delta):
@@ -49,7 +49,7 @@ func check_attack():
 	
 func check_idle():
 	if not animation_player.is_playing():
-		animation_player.play("idle")
+	#	animation_player.play("idle")
 		if weapon_handler.get_child_count() > 0:
 			weapon_handler.remove_child(weapon_handler.get_child(0))
 	pass
@@ -84,6 +84,6 @@ func _on_damager_player_damaged(body):
 
 
 func _on_animation_player_animation_finished(anim_name):
-	if animation_player == "dead":
+	if anim_name ==  "dead":
 		#set_physics_process(false)
 		pass # Replace with function body.

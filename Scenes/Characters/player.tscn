@@ -1,8 +1,9 @@
-[gd_scene load_steps=71 format=3 uid="uid://cxhdamhyb8gxs"]
+[gd_scene load_steps=72 format=3 uid="uid://cxhdamhyb8gxs"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/player.gd" id="1_u3ie3"]
 [ext_resource type="Script" path="res://Scenes/Resources/player_data.gd" id="2_34bvw"]
 [ext_resource type="Script" path="res://Scenes/Characters/StateMachine/state_machine.gd" id="3_hffu0"]
+[ext_resource type="Script" path="res://Scenes/Characters/StateMachine/fall.gd" id="4_1gi6a"]
 [ext_resource type="Script" path="res://Scenes/Characters/StateMachine/idle.gd" id="4_rxjtn"]
 [ext_resource type="Script" path="res://Scenes/Characters/StateMachine/move.gd" id="5_03g32"]
 [ext_resource type="Script" path="res://Scenes/Characters/StateMachine/jump.gd" id="6_e78v5"]
@@ -293,8 +294,12 @@ script = ExtResource("1_u3ie3")
 player_data = SubResource("Resource_n2jln")
 metadata/_edit_group_ = true
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_hffu0")
+initial_state = NodePath("idle")
+
+[node name="fall" type="Node" parent="StateMachine"]
+script = ExtResource("4_1gi6a")
 
 [node name="idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_rxjtn")
