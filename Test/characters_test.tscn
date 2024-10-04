@@ -41,10 +41,10 @@ mesh = SubResource("QuadMesh_cm2o7")
 shape = SubResource("RectangleShape2D_shbw6")
 
 [node name="Player" parent="." instance=ExtResource("1_1nqa8")]
-position = Vector2(280, 392)
+position = Vector2(734, 178)
 
 [node name="MonsterEnemy" parent="." instance=ExtResource("2_swwnw")]
-position = Vector2(912, 424)
+position = Vector2(129, 413)
 
 [node name="PeaMonsterEnemy" parent="." instance=ExtResource("3_agtcb")]
-position = Vector2(-24.0001, 360)
+position = Vector2(-22, 398)

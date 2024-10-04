@@ -61,7 +61,7 @@
 
 [sub_resource type="Resource" id="Resource_n2jln"]
 script = ExtResource("2_34bvw")
-speed = 400.0
+speed = 24000.0
 jump_velocity = -520.0
 health = 100
 

@@ -26,6 +26,7 @@ func _physics_process(delta):
 	#check_idle()
 	#check_move_x()
 	move_and_slide()
+	pass
 	
 func fall(delta):
 	if not is_on_floor():
@@ -55,18 +56,18 @@ func check_idle():
 	pass
 
 func check_move_x():
-	direction = Input.get_axis("move_left", "move_right")
-	if direction:
-		velocity.x = direction * player_data.speed
-		if is_on_floor():
-			animation_player.play("run")
-		move.emit(direction)
-		if direction > 0:
-			visual.scale.x = -1
-		else:
-			visual.scale.x = 1
-	else: 
-		velocity.x = move_toward(velocity.x, 0, player_data.speed)
+	#direction = Input.get_axis("move_left", "move_right")
+	#if direction:
+		#velocity.x = direction * player_data.speed
+		#if is_on_floor():
+			#animation_player.play("run")
+		#move.emit(direction)
+		#if direction > 0:
+			#visual.scale.x = -1
+		#else:
+			#visual.scale.x = 1
+	#else:
+		#velocity.x = move_toward(velocity.x, 0, player_data.speed)
 	pass
 
 func _on_collecter_player_collected(area):

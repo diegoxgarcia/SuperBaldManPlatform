@@ -14,6 +14,8 @@ func update(delta : float):
 		transitioned.emit(self, "jump")
 	if not player.is_on_floor():
 		transitioned.emit(self, "fall")
+	if Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right"):
+		transitioned.emit(self, "move")
 	pass
 	
 func enter():
