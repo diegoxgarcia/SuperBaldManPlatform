@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/Collectables/vinyl.gd" id="1_d6c8t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gklgo"]
-radius = 24.0
+radius = 300.0
 
 [sub_resource type="Animation" id="Animation_o1jwq"]
 resource_name = "spin"
@@ -45,11 +45,11 @@ _data = {
 }
 
 [node name="Vinyl" type="Area2D"]
+scale = Vector2(0.16, 0.16)
 script = ExtResource("1_d6c8t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -6.28319
-scale = Vector2(0.0800668, 0.08)
 texture = ExtResource("1_ct7f0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

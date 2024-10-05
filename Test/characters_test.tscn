@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bov5uealh6dy4"]
+[gd_scene load_steps=8 format=3 uid="uid://bov5uealh6dy4"]
 
 [ext_resource type="PackedScene" uid="uid://cxhdamhyb8gxs" path="res://Scenes/Characters/player.tscn" id="1_1nqa8"]
+[ext_resource type="Script" path="res://Test/characters_test.gd" id="1_o8smg"]
 [ext_resource type="PackedScene" uid="uid://wvuen8h80w5a" path="res://Scenes/Characters/monster_enemy.tscn" id="2_swwnw"]
 [ext_resource type="PackedScene" uid="uid://cajv8vgfny11m" path="res://Scenes/Characters/pea_monster_enemy.tscn" id="3_agtcb"]
 [ext_resource type="PackedScene" uid="uid://dnud618xbw41l" path="res://Scenes/Collectables/vinyl.tscn" id="4_t1rc0"]
@@ -12,6 +13,7 @@ size = Vector2(1000, 15)
 size = Vector2(1008, 16)
 
 [node name="CharactersTest" type="Node2D"]
+script = ExtResource("1_o8smg")
 
 [node name="Platform" type="StaticBody2D" parent="."]
 position = Vector2(408, 516)
@@ -28,7 +30,7 @@ mesh = SubResource("QuadMesh_cm2o7")
 shape = SubResource("RectangleShape2D_shbw6")
 
 [node name="Platform2" type="StaticBody2D" parent="."]
-position = Vector2(880, 656)
+position = Vector2(1272, 728)
 collision_layer = 8
 collision_mask = 3
 metadata/_edit_group_ = true
@@ -42,13 +44,16 @@ mesh = SubResource("QuadMesh_cm2o7")
 shape = SubResource("RectangleShape2D_shbw6")
 
 [node name="Player" parent="." instance=ExtResource("1_1nqa8")]
-position = Vector2(734, 178)
+position = Vector2(856, 400)
 
 [node name="MonsterEnemy" parent="." instance=ExtResource("2_swwnw")]
-position = Vector2(129, 413)
+position = Vector2(1688, 520)
 
 [node name="PeaMonsterEnemy" parent="." instance=ExtResource("3_agtcb")]
-position = Vector2(-22, 398)
+position = Vector2(-64, 424)
+
+[node name="PeaMonsterEnemy2" parent="." instance=ExtResource("3_agtcb")]
+position = Vector2(400, 424)
 
 [node name="Vinyl" parent="." instance=ExtResource("4_t1rc0")]
-position = Vector2(528, 472)
+position = Vector2(528, 456)

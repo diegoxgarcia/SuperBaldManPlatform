@@ -1,3 +1,4 @@
+class_name Vinyl
 extends Area2D
 
 @onready var animation_player = $AnimationPlayer

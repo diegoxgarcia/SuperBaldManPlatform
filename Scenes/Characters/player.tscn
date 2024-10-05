@@ -62,8 +62,8 @@
 
 [sub_resource type="Resource" id="Resource_n2jln"]
 script = ExtResource("2_34bvw")
-speed = 24000.0
-jump_velocity = -520.0
+speed = 35000.0
+jump_velocity = -700.0
 health = 100
 score = 0
 
@@ -287,12 +287,13 @@ _data = {
 "run": SubResource("Animation_fo63x")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_csixw"]
-size = Vector2(288, 473)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dafh2"]
+radius = 148.0
+height = 468.0
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(0.25, 0.25)
-collision_mask = 14
+scale = Vector2(0.4, 0.4)
+collision_mask = 46
 script = ExtResource("1_u3ie3")
 player_data = SubResource("Resource_n2jln")
 metadata/_edit_group_ = true
@@ -357,10 +358,10 @@ position = Vector2(-444, 72)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, -14)
-shape = SubResource("RectangleShape2D_csixw")
+shape = SubResource("CapsuleShape2D_dafh2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(0.6, 0.6)
 
 [connection signal="player_collected" from="Visual/Collecter" to="." method="_on_collecter_player_collected"]
 [connection signal="player_damaged" from="Visual/Damager" to="." method="_on_damager_player_damaged"]
