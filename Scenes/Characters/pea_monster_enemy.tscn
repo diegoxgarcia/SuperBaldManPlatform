@@ -23,7 +23,7 @@
 
 [sub_resource type="Resource" id="Resource_pqt3i"]
 script = ExtResource("2_y5h43")
-speed = 200.0
+speed = 400.0
 jump_velocity = -400.0
 health = 100
 target_position = 1000.0
@@ -298,9 +298,9 @@ color_ramp = SubResource("GradientTexture1D_utmtx")
 radius = 200.0
 
 [node name="PeaMonsterEnemy" type="CharacterBody2D"]
-scale = Vector2(0.18, 0.18)
+scale = Vector2(0.36, 0.36)
 collision_layer = 2
-collision_mask = 8
+collision_mask = 40
 script = ExtResource("1_pq8mr")
 enemy_data = SubResource("Resource_pqt3i")
 metadata/_edit_group_ = true
