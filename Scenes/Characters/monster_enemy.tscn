@@ -16,6 +16,7 @@ jump_velocity = -400.0
 health = 100
 target_position = 1200.0
 damage_multiplier = 2
+power_attack = 10
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g77xn"]
 animations = [{

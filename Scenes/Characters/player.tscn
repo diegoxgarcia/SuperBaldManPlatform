@@ -65,6 +65,7 @@ script = ExtResource("2_34bvw")
 speed = 24000.0
 jump_velocity = -520.0
 health = 100
+score = 0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qkw2u"]
 radius = 124.0

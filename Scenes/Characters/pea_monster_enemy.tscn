@@ -28,6 +28,7 @@ jump_velocity = -400.0
 health = 100
 target_position = 1000.0
 damage_multiplier = 5
+power_attack = 5
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eofpw"]
 animations = [{

@@ -19,6 +19,8 @@ func _on_collecter_player_collected(area):
 
 
 func _on_damager_player_damaged(body):
+	player_data.health = player_data.health - body.enemy_data.power_attack
+	print_debug(str(player_data.health))
 	state_machine.current_state.transitioned.emit(state_machine.current_state, "hurt")
 	pass
 
@@ -32,5 +34,4 @@ func _on_animation_player_animation_finished(anim_name):
 				state_machine.current_state.transitioned.emit(state_machine.current_state, "dead")
 		"attack":
 			state_machine.current_state.transitioned.emit(state_machine.current_state, "idle")
-		#set_physics_process(false)
 	pass

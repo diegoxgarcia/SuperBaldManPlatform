@@ -6,3 +6,4 @@ extends Resource
 @export var health : int
 @export var target_position : float
 @export var damage_multiplier : int
+@export var power_attack : int

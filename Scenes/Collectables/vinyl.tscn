@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://dnud618xbw41l"]
+
+[ext_resource type="Texture2D" uid="uid://ckpc4eaewi1y1" path="res://Assets/Collectables/vinyl.png" id="1_ct7f0"]
+[ext_resource type="Script" path="res://Scenes/Collectables/vinyl.gd" id="1_d6c8t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gklgo"]
+radius = 24.0
+
+[sub_resource type="Animation" id="Animation_o1jwq"]
+resource_name = "spin"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-6.28319, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_xuw5y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0emxn"]
+_data = {
+"RESET": SubResource("Animation_xuw5y"),
+"spin": SubResource("Animation_o1jwq")
+}
+
+[node name="Vinyl" type="Area2D"]
+script = ExtResource("1_d6c8t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -6.28319
+scale = Vector2(0.0800668, 0.08)
+texture = ExtResource("1_ct7f0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gklgo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0emxn")
+}
