@@ -2,36 +2,28 @@ class_name Move
 extends State
 
 @onready var player: Player = $"../.."
-@onready var animation_player: AnimationPlayer = $"../../Visual/AnimationPlayer"
 
-var direction
+var direction : float
 
 func physics_update(delta : float):
 	direction = Input.get_axis("move_left", "move_right")
+	if Input.is_action_just_pressed("jump"):
+		transitioned.emit(self, "jump")
+	if Input.is_action_just_pressed("attack"):
+		transitioned.emit(self, "attack")
 	if direction:
-		player.velocity.x = direction * player.player_data.speed * delta
-		animation_player.play("run")
-		#if player.is_on_floor():
-			#animation_player.play("run")
-		if direction > 0:
-			player.visual.scale.x = -1
-		else:
-			player.visual.scale.x = 1
-		if player.velocity.y > 0:
-			transitioned.emit(self, "fall")
+		change_direction_velocity(player, delta, direction)
 	else: 
 		transitioned.emit(self, "idle")
-		#player.velocity.x = move_toward(player.velocity.x, 0, player.player_data.speed)
+	if not player.is_on_floor():
+		transitioned.emit(self, "fall")
 	pass
-	
-func update(delta : float):
-	pass
-	
+
 func enter():
 	if player.is_on_floor():
-			animation_player.play("run")
+			player.animation_player.play("run")
 	pass
 
 func exit():
-	animation_player.stop()
+	player.animation_player.stop()
 	pass
