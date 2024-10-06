@@ -193,8 +193,9 @@ scale_over_velocity_min = 744.99
 scale_over_velocity_max = 925.32
 color_ramp = SubResource("GradientTexture1D_7rkl1")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxhlj"]
-size = Vector2(533.333, 586.667)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2k0js"]
+radius = 266.667
+height = 640.0
 
 [node name="MonsterEnemy" type="CharacterBody2D"]
 scale = Vector2(0.3, 0.3)
@@ -235,7 +236,7 @@ randomness = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.52588e-05, 26.6667)
-shape = SubResource("RectangleShape2D_uxhlj")
+shape = SubResource("CapsuleShape2D_2k0js")
 debug_color = Color(0.862745, 1, 0.454902, 0.513726)
 
 [node name="Control" type="Control" parent="."]

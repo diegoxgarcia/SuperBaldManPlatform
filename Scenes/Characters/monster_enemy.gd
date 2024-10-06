@@ -42,7 +42,7 @@ func direction_flip():
 		
 func follow_player():
 	if player != null:
-		velocity = Vector2(player.global_position.x - global_position.x, player.global_position.y).normalized() * enemy_data.speed
+		velocity = Vector2(player.global_position.x - global_position.x, abs(player.global_position.y) * 5).normalized() * enemy_data.speed
 		if !animated_sprite_2d.is_playing() and enemy_data.speed > 0:
 			animated_sprite_2d.play("walkidle")
 	pass
