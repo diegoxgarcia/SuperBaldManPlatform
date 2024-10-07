@@ -44,7 +44,7 @@ _data = {
 "spin": SubResource("Animation_o1jwq")
 }
 
-[node name="Vinyl" type="Area2D"]
+[node name="Vinyl" type="Area2D" groups=["Collectibles"]]
 scale = Vector2(0.16, 0.16)
 script = ExtResource("1_d6c8t")
 

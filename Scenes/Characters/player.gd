@@ -8,6 +8,12 @@ extends CharacterBody2D
 @onready var visual = $Visual
 @onready var weapon_handler = $Visual/WeaponHandler
 
+signal update_match_data
+
+func _ready():
+	update_match_data.emit(player_data.health, player_data.score)
+	pass
+
 func _physics_process(delta):
 	move_and_slide()
 

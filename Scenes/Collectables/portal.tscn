@@ -1,0 +1,145 @@
+[gd_scene load_steps=18 format=3 uid="uid://lsahto6ndb8i"]
+
+[ext_resource type="Texture2D" uid="uid://duufmt1hic2o7" path="res://Assets/Particles/21 000i InStarOutArea1Infinity.png" id="1_edpmb"]
+[ext_resource type="Texture2D" uid="uid://buh3risy4kkbv" path="res://Assets/Particles/flare_0.png" id="2_hqx8b"]
+[ext_resource type="PackedScene" path="res://Scenes/Particles/gpu_particles_2d.tscn" id="3_hl5gw"]
+[ext_resource type="Texture2D" uid="uid://duxwy3wodph3a" path="res://Assets/Particles/floaty_64.png" id="4_kgswg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pij4r"]
+atlas = ExtResource("1_edpmb")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwvq0"]
+atlas = ExtResource("1_edpmb")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2jnc"]
+atlas = ExtResource("1_edpmb")
+region = Rect2(0, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8n63"]
+atlas = ExtResource("1_edpmb")
+region = Rect2(192, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kiumi"]
+atlas = ExtResource("1_edpmb")
+region = Rect2(384, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ageal"]
+atlas = ExtResource("1_edpmb")
+region = Rect2(576, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djg3y"]
+atlas = ExtResource("1_edpmb")
+region = Rect2(768, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qctif"]
+atlas = ExtResource("1_edpmb")
+region = Rect2(0, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xxdg"]
+atlas = ExtResource("1_edpmb")
+region = Rect2(192, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwgsw"]
+atlas = ExtResource("1_edpmb")
+region = Rect2(384, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiwpc"]
+atlas = ExtResource("1_edpmb")
+region = Rect2(576, 576, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vkom2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pij4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwvq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2jnc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8n63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kiumi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ageal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djg3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qctif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xxdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwgsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qiwpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwgsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xxdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qctif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djg3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ageal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kiumi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8n63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2jnc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwvq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pij4r")
+}],
+"loop": true,
+"name": &"portal",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_apu3m"]
+radius = 43.7379
+
+[node name="Portal" type="Area2D" groups=["Checkpoints"]]
+scale = Vector2(2, 2)
+
+[node name="Flare" type="Sprite2D" parent="."]
+texture = ExtResource("2_hqx8b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vkom2")
+animation = &"portal"
+autoplay = "portal"
+frame_progress = 0.789967
+
+[node name="GPUParticles2D" parent="." instance=ExtResource("3_hl5gw")]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("4_kgswg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_apu3m")
+
+[editable path="GPUParticles2D"]

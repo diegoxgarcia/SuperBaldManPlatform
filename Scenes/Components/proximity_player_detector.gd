@@ -11,6 +11,8 @@ func clear_target_position():
 	pass
 
 func set_target_position(target_position_x : float):
+	ray_cast_player_back.enabled = true
+	ray_cast_player_front.enabled = true
 	ray_cast_player_back.target_position.x = target_position_x
 	ray_cast_player_front.target_position.x = -1 * target_position_x
 	pass

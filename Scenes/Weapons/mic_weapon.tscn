@@ -150,7 +150,7 @@ _data = {
 "attack": SubResource("Animation_whca4")
 }
 
-[node name="MicWeapon" type="Area2D"]
+[node name="MicWeapon" type="Area2D" groups=["Weapons"]]
 position = Vector2(24, 0)
 scale = Vector2(2, 2)
 collision_layer = 16

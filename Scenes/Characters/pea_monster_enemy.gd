@@ -4,7 +4,7 @@ extends MonsterEnemy
 func _ready():
 	$Visual/Damager.enemy_damaged.connect(_on_damager_enemy_damaged)
 	proximity_player_detector.set_target_position(enemy_data.target_position)
-	health_bar.value = enemy_data.health
+	health_bar.value = enemy_health
 	pass
 
 func _physics_process(delta):
@@ -19,6 +19,6 @@ func _process(delta):
 	pass	
 
 func _on_damager_enemy_damaged(area):
-	if enemy_data.speed != 0:
+	if is_physics_processing():
 		enemy_damaged("hit_rotate", "hit_rotate_backwards", area)
 	pass

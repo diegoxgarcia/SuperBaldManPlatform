@@ -31,6 +31,12 @@ folder_colors={
 "res://Test/": "yellow"
 }
 
+[global_group]
+
+Checkpoints="Checkpoints (Portals)"
+Weapons="Player weapons"
+Collectibles="Coins, Discs and all that make score"
+
 [input]
 
 attack={
@@ -68,3 +74,4 @@ jump={
 2d_physics/layer_4="Floor"
 2d_physics/layer_5="Weapon"
 2d_physics/layer_6="Platform"
+2d_physics/layer_7="Portal"
