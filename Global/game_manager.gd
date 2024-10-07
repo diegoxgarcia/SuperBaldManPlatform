@@ -1,7 +1,7 @@
 extends Node
 
 const savefile = "user://SAVEFILE.save"
-@export var match_data : MatchData
+var match_data : MatchData
 
 var game_data = {
 	"record" : 0,

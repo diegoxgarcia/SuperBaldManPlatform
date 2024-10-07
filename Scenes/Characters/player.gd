@@ -26,8 +26,8 @@ func _on_collecter_player_collected(area):
 
 func _on_damager_player_damaged(body):
 	player_data.health = player_data.health - body.enemy_data.power_attack
-	print_debug(str(player_data.health))
 	state_machine.current_state.transitioned.emit(state_machine.current_state, "hurt")
+	update_match_data.emit(player_data.health, player_data.score)
 	pass
 
 
