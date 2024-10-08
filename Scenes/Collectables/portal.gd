@@ -5,10 +5,10 @@ extends Area2D
 @onready var collision_shape_2d = $CollisionShape2D
 
 func _ready():
-	self.monitorable = false
+	set_deferred("monitorable", false) 
 	pass
 
 func open_portal():
-	self.monitorable = true
+	set_deferred("monitorable", true) 
 	portal_animated_sprite_2d.visible = true
 	pass

@@ -12,6 +12,8 @@ var player : Player
 @onready var dead_particles = $Visual/DeadParticles
 var enemy_health : int
 
+signal enemy_dead
+
 func _enter_tree():
 	enemy_health = enemy_data.health
 	pass
@@ -79,5 +81,6 @@ func _on_damager_enemy_damaged(area):
 
 
 func _on_dead_particles_finished():
+	enemy_dead.emit()
 	queue_free()
 	pass

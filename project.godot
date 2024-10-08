@@ -36,6 +36,7 @@ folder_colors={
 Checkpoints="Checkpoints (Portals)"
 Weapons="Player weapons"
 Collectibles="Coins, Discs and all that make score"
+Enemy="All enemies"
 
 [input]
 
