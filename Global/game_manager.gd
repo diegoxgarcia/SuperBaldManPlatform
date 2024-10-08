@@ -8,7 +8,26 @@ var game_data = {
 	"checkpoint_level" : 0
 }
 
+func dir_contents(path):
+	var dir = DirAccess.open(path)
+	var index = 0
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "" && file_name.contains(".tscn"):
+			if dir.current_is_dir():
+				print("Found directory: " + file_name)
+			else:
+				match_data.levels.get_or_add({str(index) : file_name})
+				print("Found levels: " + file_name)
+				#index = index + 1
+			file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path.")
+
+
 func _ready():
+	dir_contents("res://Scenes/Levels/")
 	load_data()
 	pass
 

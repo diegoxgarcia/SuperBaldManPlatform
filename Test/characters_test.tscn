@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bov5uealh6dy4"]
+[gd_scene load_steps=9 format=3 uid="uid://bov5uealh6dy4"]
 
 [ext_resource type="PackedScene" uid="uid://cxhdamhyb8gxs" path="res://Scenes/Characters/player.tscn" id="1_1nqa8"]
 [ext_resource type="Script" path="res://Test/characters_test.gd" id="1_o8smg"]
 [ext_resource type="PackedScene" uid="uid://wvuen8h80w5a" path="res://Scenes/Characters/monster_enemy.tscn" id="2_swwnw"]
 [ext_resource type="PackedScene" uid="uid://cajv8vgfny11m" path="res://Scenes/Characters/pea_monster_enemy.tscn" id="3_agtcb"]
 [ext_resource type="PackedScene" uid="uid://dnud618xbw41l" path="res://Scenes/Collectables/vinyl.tscn" id="4_t1rc0"]
+[ext_resource type="PackedScene" uid="uid://lsahto6ndb8i" path="res://Scenes/Collectables/portal.tscn" id="6_njf2f"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_cm2o7"]
 size = Vector2(1000, 15)
@@ -85,3 +86,6 @@ position = Vector2(400, 424)
 
 [node name="Vinyl" parent="." instance=ExtResource("4_t1rc0")]
 position = Vector2(528, 456)
+
+[node name="Portal" parent="." instance=ExtResource("6_njf2f")]
+position = Vector2(1360, 176)

@@ -1,9 +1,9 @@
 [gd_scene load_steps=18 format=3 uid="uid://lsahto6ndb8i"]
 
 [ext_resource type="Texture2D" uid="uid://duufmt1hic2o7" path="res://Assets/Particles/21 000i InStarOutArea1Infinity.png" id="1_edpmb"]
+[ext_resource type="Script" path="res://Scenes/Collectables/portal.gd" id="1_inpme"]
 [ext_resource type="Texture2D" uid="uid://buh3risy4kkbv" path="res://Assets/Particles/flare_0.png" id="2_hqx8b"]
-[ext_resource type="PackedScene" path="res://Scenes/Particles/gpu_particles_2d.tscn" id="3_hl5gw"]
-[ext_resource type="Texture2D" uid="uid://duxwy3wodph3a" path="res://Assets/Particles/floaty_64.png" id="4_kgswg"]
+[ext_resource type="PackedScene" uid="uid://cspmkebjhena7" path="res://Scenes/Particles/gpu_particles_2d.tscn" id="3_hl5gw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pij4r"]
 atlas = ExtResource("1_edpmb")
@@ -125,11 +125,13 @@ radius = 43.7379
 
 [node name="Portal" type="Area2D" groups=["Checkpoints"]]
 scale = Vector2(2, 2)
+script = ExtResource("1_inpme")
 
 [node name="Flare" type="Sprite2D" parent="."]
 texture = ExtResource("2_hqx8b")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="PortalAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_vkom2")
 animation = &"portal"
 autoplay = "portal"
@@ -137,7 +139,6 @@ frame_progress = 0.789967
 
 [node name="GPUParticles2D" parent="." instance=ExtResource("3_hl5gw")]
 scale = Vector2(1.2, 1.2)
-texture = ExtResource("4_kgswg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_apu3m")

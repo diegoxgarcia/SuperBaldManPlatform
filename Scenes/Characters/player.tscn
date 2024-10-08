@@ -293,7 +293,7 @@ height = 468.0
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.4, 0.4)
-collision_mask = 46
+collision_mask = 110
 script = ExtResource("1_u3ie3")
 player_data = SubResource("Resource_n2jln")
 metadata/_edit_group_ = true

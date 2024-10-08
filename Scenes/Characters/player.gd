@@ -16,11 +16,22 @@ func _ready():
 
 func _physics_process(delta):
 	move_and_slide()
+	pass
 
 func _on_collecter_player_collected(area):
-	area.queue_free()
-	#score += 10 -> Actualiza el score (deberia llamar al game_manager?)
-	#update_score.emit(score)
+	if area.is_in_group("Collectibles"):
+		player_data.score = player_data.score + 1
+		update_match_data.emit(player_data.health, player_data.score)
+		area.queue_free()
+		# TODO Aviso que vaya al portal?
+	elif area.is_in_group("Weapons"):
+		area.queue_free()
+	elif area.is_in_group("Checkpoints"):
+		area.queue_free()
+		# TODO Graba la partida para continuar (esto tendria que habilitar un boton en el menu)
+		# TODO Pasa al proximo nivel (tiene que conocer el nivel actual? para saber cual es el proximo)? Tengo que usar un array de niveles precargados en el gamemanager
+		# TODO get_tree().change_scene_to_file("res://Scenes/Levels/level_1.tscn") - Puedo jugar con un metodo en el GameManager que varie el numero despues del "level_", si existe, muestra, sino you win
+		pass
 	pass
 
 
