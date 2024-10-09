@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckfmypynw1lwc"
-path="res://.godot/imported/Pack 01 - Space PRO pack.png-e53afa111dd420d6bc7862a4d0cbb424.ctex"
+uid="uid://ckhuswax6l4n4"
+path="res://.godot/imported/white_pause.png-440b639d8438f9a631d104497f67c1c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TileSet/Pack 01 - Space PRO pack.png"
-dest_files=["res://.godot/imported/Pack 01 - Space PRO pack.png-e53afa111dd420d6bc7862a4d0cbb424.ctex"]
+source_file="res://Assets/GUI/white_pause.png"
+dest_files=["res://.godot/imported/white_pause.png-440b639d8438f9a631d104497f67c1c6.ctex"]
 
 [params]
 

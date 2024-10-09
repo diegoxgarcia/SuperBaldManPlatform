@@ -1,12 +1,29 @@
 extends Node
 
 const savefile = "user://SAVEFILE.save"
+const level_path = "res://Scenes/Levels/"
 var match_data = MatchData.new()
 
 var game_data = {
-	"record" : 0,
-	"checkpoint_level" : 0
+	"score" : 0,
+	"checkpoint_level" : ""
 }
+
+func save_checkpoint_record(score : int, checkpoint : String):
+	game_data.score = score
+	game_data.checkpoint_level = checkpoint
+	save_data()
+	pass
+	
+func get_next_level(level : String) -> String:
+	var index = int(level.replace("level_", ""))
+	index = index + 1
+	var next_level = "level_" + str(index)
+	if match_data.levels.has(next_level):
+		return level_path + next_level + ".tscn"
+	else:
+		return level_path + match_data.levels.pop_back() + ".tscn"
+	pass
 
 func dir_contents(path):
 	var dir = DirAccess.open(path)
@@ -14,19 +31,20 @@ func dir_contents(path):
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
-		while file_name != "" && file_name.contains(".tscn"):
+		while file_name != "":
 			if dir.current_is_dir():
 				print("Found directory: " + file_name)
 			else:
-				match_data.levels.append(file_name)
-				print("Found levels: " + str(match_data.levels))
+				if file_name.contains(".tscn"):
+					match_data.levels.append(file_name.replace(".tscn", ""))
 			file_name = dir.get_next()
+		match_data.levels.sort()
 	else:
 		print("An error occurred when trying to access the path.")
 
-
 func _ready():
-	dir_contents("res://Scenes/Levels/")
+	match_data.player_health = 100
+	dir_contents(level_path)
 	load_data()
 	pass
 

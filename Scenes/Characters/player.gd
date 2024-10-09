@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var visual = $Visual
 @onready var weapon_handler = $Visual/WeaponHandler
 
+signal go_to_next_level
 signal update_match_data
 
 func _ready():
@@ -23,15 +24,10 @@ func _on_collecter_player_collected(area):
 		player_data.score = player_data.score + 1
 		update_match_data.emit(player_data.health, player_data.score)
 		area.queue_free()
-		# TODO Aviso que vaya al portal?
 	elif area.is_in_group("Weapons"):
 		area.queue_free()
 	elif area.is_in_group("Checkpoints"):
-		area.queue_free()
-		# TODO Graba la partida para continuar (esto tendria que habilitar un boton en el menu)
-		# TODO Pasa al proximo nivel (tiene que conocer el nivel actual? para saber cual es el proximo)? Tengo que usar un array de niveles precargados en el gamemanager
-		# TODO get_tree().change_scene_to_file("res://Scenes/Levels/level_1.tscn") - Puedo jugar con un metodo en el GameManager que varie el numero despues del "level_", si existe, muestra, sino you win
-		pass
+		go_to_next_level.emit()
 	pass
 
 

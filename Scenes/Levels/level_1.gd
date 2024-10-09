@@ -1,22 +1,34 @@
+class_name Level1
 extends Node2D
 
 @onready var health_progress_bar: TextureProgressBar = $CanvasLayer/UI/HealthProgressBar
 @onready var defeated: Label = $CanvasLayer/UI/EnemyPanel/Defeated
-@export var match_data : MatchData
 @onready var player: Player = $Player
 @onready var score_progress_bar = $CanvasLayer/UI/ScoreProgressBar
 @onready var tile_map_layer = $TileMapLayer
 @onready var portal = $Portal
+@onready var ui_animation_player = $CanvasLayer/UI/UIAnimationPlayer
+@onready var portal_label = $CanvasLayer/UI/PortalLabel
+@onready var v_box_container = $CanvasLayer/UI/VBoxContainer
 
 func _ready():
-	health_progress_bar.value = match_data.player_health
-	score_progress_bar.value = match_data.collectables_taken
+	#health_progress_bar.value = GameManager.match_data.player_health
+	health_progress_bar.value = player.player_data.health
+	score_progress_bar.value = GameManager.match_data.collectables_taken
 	player.update_match_data.connect(update_player_match_data)
 	score_progress_bar.max_value = tile_map_layer.get_children().size()
 	connect_enemy_signal()
 	pass 
 
 func _process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		open_menu(false)
+	pass
+	
+func open_menu(game_over : bool):
+	if !game_over:
+		get_tree().paused = true
+	v_box_container.visible = true
 	pass
 	
 func connect_enemy_signal():
@@ -26,17 +38,43 @@ func connect_enemy_signal():
 	pass
 
 func update_player_match_data(health : int, score : int):
-	match_data.player_health = health
-	health_progress_bar.value = match_data.player_health
+	GameManager.match_data.player_health = health
+	health_progress_bar.value = GameManager.match_data.player_health
 	score_progress_bar.value = score
+	if health <= 0:
+		ui_animation_player.play("game_over")
 	pass
 	
 func update_enemy_defeated():
-	match_data.enemies_defeated = match_data.enemies_defeated + 1
-	defeated.text = " Enemigos derrotados: " + str(match_data.enemies_defeated)
+	GameManager.match_data.enemies_defeated = GameManager.match_data.enemies_defeated + 1
+	defeated.text = " Defeated enemies: " + str(GameManager.match_data.enemies_defeated)
 	pass
 
 func _on_score_progress_bar_value_changed(value):
 	if value == score_progress_bar.max_value:
+		portal_label.visible = true
 		portal.open_portal()
+	pass
+
+func _on_continue_button_pressed():
+	v_box_container.visible = false
+	get_tree().paused = false
+	pass
+
+func _on_exit_button_pressed():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/Menu/main_menu.tscn")
+	pass
+
+func _on_ui_animation_player_animation_finished(anim_name):
+	match anim_name:
+		"game_over":
+			v_box_container.get_node("ContinueButton").visible = false
+			open_menu(true)	
+	pass
+
+func _on_player_go_to_next_level():
+	var next_level = GameManager.get_next_level(self.name.to_lower())
+	GameManager.save_checkpoint_record(GameManager.match_data.collectables_taken, next_level)
+	get_tree().change_scene_to_file(next_level)
 	pass

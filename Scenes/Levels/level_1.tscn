@@ -1,9 +1,8 @@
-[gd_scene load_steps=24 format=4 uid="uid://b434sj85aqidb"]
+[gd_scene load_steps=27 format=4 uid="uid://b434sj85aqidb"]
 
 [ext_resource type="Texture2D" uid="uid://cmyxu37qdio6w" path="res://Assets/TileSet/Background.png" id="1_cnyd1"]
 [ext_resource type="PackedScene" uid="uid://cxhdamhyb8gxs" path="res://Scenes/Characters/player.tscn" id="1_gbdjr"]
 [ext_resource type="Script" path="res://Scenes/Levels/level_1.gd" id="1_ygtmi"]
-[ext_resource type="Script" path="res://Scenes/Resources/match_data.gd" id="2_n5pad"]
 [ext_resource type="Texture2D" uid="uid://cjfjlq7dlbn03" path="res://Assets/TileSet/_Spritesheet.png" id="2_vss5e"]
 [ext_resource type="PackedScene" uid="uid://cajv8vgfny11m" path="res://Scenes/Characters/pea_monster_enemy.tscn" id="2_yopk8"]
 [ext_resource type="PackedScene" uid="uid://wvuen8h80w5a" path="res://Scenes/Characters/monster_enemy.tscn" id="3_0owa6"]
@@ -16,15 +15,12 @@
 [ext_resource type="FontFile" uid="uid://c7j2hknijesdh" path="res://Assets/Fonts/kenpixel_mini_square.ttf" id="9_hkepw"]
 [ext_resource type="Texture2D" uid="uid://dwr7vakvkfmjx" path="res://Assets/Progress/BarSystem/YellowBar.png" id="11_i8gny"]
 [ext_resource type="FontFile" uid="uid://bfgv1ni2bb3w2" path="res://Assets/Fonts/kenpixel_blocks.ttf" id="12_g05yw"]
+[ext_resource type="Texture2D" uid="uid://bq31t3auicrl2" path="res://Assets/GUI/white_play.png" id="13_exf5d"]
+[ext_resource type="FontFile" uid="uid://3l1aqhqnv27n" path="res://Assets/Fonts/kenpixel.ttf" id="13_kkjnp"]
+[ext_resource type="Texture2D" uid="uid://bfpafwmhvimob" path="res://Assets/GUI/white_musicOn.png" id="14_kf0d7"]
+[ext_resource type="Texture2D" uid="uid://b07e0psn40c5l" path="res://Assets/GUI/white_home.png" id="15_xdfxl"]
 
-[sub_resource type="Resource" id="Resource_77me2"]
-script = ExtResource("2_n5pad")
-enemies_defeated = 0
-collectables_taken = 0
-player_health = 100
-levels = []
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7vwlf"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdfml"]
 texture = ExtResource("2_vss5e")
 texture_region_size = Vector2i(256, 256)
 6:6/0 = 0
@@ -99,7 +95,7 @@ texture_region_size = Vector2i(256, 256)
 tile_size = Vector2i(256, 256)
 physics_layer_0/collision_layer = 32
 physics_layer_0/collision_mask = 3
-sources/0 = SubResource("TileSetAtlasSource_7vwlf")
+sources/0 = SubResource("TileSetAtlasSource_hdfml")
 
 [sub_resource type="LabelSettings" id="LabelSettings_7mxvr"]
 font = ExtResource("9_hkepw")
@@ -114,15 +110,138 @@ font_size = 25
 
 [sub_resource type="Animation" id="Animation_ewu7r"]
 resource_name = "game_over"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOverLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.25, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-96.5, 656), Vector2(-96.5, 115.733), Vector2(-96.5, 120), Vector2(-96.5, 304), Vector2(-96.5, 152), Vector2(-96.5, 200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverLabel:anchor_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.465, 0.631, 0.922, 0.687, 0.761]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverLabel:anchor_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.084, 1.084, 1.084, 1.084, 1.084]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOverLabel:anchor_top")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.012, 0.179, 0.469, 0.235, 0.309]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GameOverLabel:anchor_left")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.084, -0.084, -0.084, -0.084, -0.084]
+}
+
+[sub_resource type="Animation" id="Animation_q6egx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOverLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-96.5, 656)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverLabel:anchor_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.465]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverLabel:anchor_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.084]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOverLabel:anchor_top")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.012]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GameOverLabel:anchor_left")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.084]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_colxj"]
 _data = {
+"RESET": SubResource("Animation_q6egx"),
 "game_over": SubResource("Animation_ewu7r")
 }
 
 [node name="Level_1" type="Node2D"]
 script = ExtResource("1_ygtmi")
-match_data = SubResource("Resource_77me2")
 
 [node name="Background2D" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.2, 0.2)
@@ -195,7 +314,7 @@ offset_left = 22.0
 offset_top = 48.0
 offset_right = 67.0
 offset_bottom = 73.0
-text = "VIDA"
+text = "HEALTH"
 label_settings = SubResource("LabelSettings_7mxvr")
 
 [node name="EnemyPanel" type="Panel" parent="CanvasLayer/UI"]
@@ -211,16 +330,30 @@ grow_horizontal = 2
 
 [node name="Defeated" type="Label" parent="CanvasLayer/UI/EnemyPanel"]
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.137
-anchor_right = 0.985
-anchor_bottom = 0.862
-offset_top = 0.0199995
-offset_right = -5.86005
-offset_bottom = 0.0199966
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.5
+offset_top = -14.5
+offset_right = 173.5
+offset_bottom = 14.5
+grow_horizontal = 2
 grow_vertical = 2
-text = " Enemigos derrotados: 0"
+text = "Defeated enemies: 0"
 label_settings = SubResource("LabelSettings_qg7ce")
+
+[node name="PortalLabel" type="Label" parent="CanvasLayer/UI"]
+visible = false
+layout_mode = 0
+offset_left = 318.0
+offset_top = 48.0
+offset_right = 826.0
+offset_bottom = 73.0
+text = "The portal has opened. Escape to the next level!
+"
+label_settings = SubResource("LabelSettings_7mxvr")
 
 [node name="ScoreProgressBar" type="TextureProgressBar" parent="CanvasLayer/UI"]
 layout_mode = 1
@@ -253,13 +386,13 @@ label_settings = SubResource("LabelSettings_7mxvr")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.084
-anchor_top = 1.568
+anchor_top = 1.012
 anchor_right = 1.084
-anchor_bottom = 1.901
-offset_left = 0.268005
-offset_top = -0.0640259
-offset_right = -0.268066
-offset_bottom = 0.151855
+anchor_bottom = 1.465
+offset_left = 0.268013
+offset_top = 0.223877
+offset_right = -0.268188
+offset_bottom = 0.439697
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("12_g05yw")
@@ -267,7 +400,47 @@ theme_override_font_sizes/normal_font_size = 120
 bbcode_enabled = true
 text = "[center][wave][color=\"red\"]G[/color][color=\"yellow\"]A[/color][color=\"green\"]M[/color]E [color=\"blue\"]O[/color][color=\"orange\"]V[/color][color=\"pink\"]E[/color][color=\"black\"]R[/color][/wave][/center]"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI"]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -124.0
+offset_top = -256.0
+offset_right = 125.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ContinueButton" type="Button" parent="CanvasLayer/UI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("13_kkjnp")
+text = "BACK TO GAME"
+icon = ExtResource("13_exf5d")
+expand_icon = true
+
+[node name="AudioButton" type="Button" parent="CanvasLayer/UI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("13_kkjnp")
+text = "AUDIO"
+icon = ExtResource("14_kf0d7")
+expand_icon = true
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/UI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("13_kkjnp")
+text = "EXIT"
+icon = ExtResource("15_xdfxl")
+expand_icon = true
+
+[node name="UIAnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI"]
 libraries = {
 "": SubResource("AnimationLibrary_colxj")
 }
@@ -309,3 +482,7 @@ position = Vector2(8230, -433)
 position = Vector2(12750, 661)
 
 [connection signal="value_changed" from="CanvasLayer/UI/ScoreProgressBar" to="." method="_on_score_progress_bar_value_changed"]
+[connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="animation_finished" from="CanvasLayer/UI/UIAnimationPlayer" to="." method="_on_ui_animation_player_animation_finished"]
+[connection signal="go_to_next_level" from="Player" to="." method="_on_player_go_to_next_level"]
