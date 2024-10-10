@@ -70,7 +70,7 @@ func _on_ui_animation_player_animation_finished(anim_name):
 	match anim_name:
 		"game_over":
 			v_box_container.get_node("ContinueButton").visible = false
-			open_menu(true)	
+			open_menu(true)
 	pass
 
 func _on_player_go_to_next_level():
