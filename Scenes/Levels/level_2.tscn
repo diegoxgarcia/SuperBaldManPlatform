@@ -248,45 +248,6 @@ _data = {
 "game_over": SubResource("Animation_ewu7r")
 }
 
-[sub_resource type="Animation" id="Animation_7p7r1"]
-resource_name = "fade_out"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../Music:volume_db")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-80.0, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_2i67l"]
 length = 0.001
 tracks/0/type = "value"
@@ -351,6 +312,45 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, -80.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7p7r1"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Music:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -626,47 +626,49 @@ autoplay = "fade_out"
 [node name="Player" parent="." instance=ExtResource("13_3lv7l")]
 position = Vector2(415, 451)
 
-[node name="Portal" parent="." instance=ExtResource("14_7b4cb")]
-position = Vector2(13708, -589)
+[node name="Enemies" type="Node" parent="."]
 
-[node name="PeaMonsterEnemy" parent="." instance=ExtResource("18_t45gd")]
+[node name="PeaMonsterEnemy" parent="Enemies" instance=ExtResource("18_t45gd")]
 position = Vector2(2504, 470)
 
-[node name="PeaMonsterEnemy3" parent="." instance=ExtResource("18_t45gd")]
+[node name="PeaMonsterEnemy3" parent="Enemies" instance=ExtResource("18_t45gd")]
 position = Vector2(10724, -148)
 
-[node name="PeaMonsterEnemy6" parent="." instance=ExtResource("18_t45gd")]
+[node name="PeaMonsterEnemy6" parent="Enemies" instance=ExtResource("18_t45gd")]
 position = Vector2(12834, -154)
 
-[node name="PeaMonsterEnemy4" parent="." instance=ExtResource("18_t45gd")]
+[node name="PeaMonsterEnemy4" parent="Enemies" instance=ExtResource("18_t45gd")]
 position = Vector2(9891, 722)
 
-[node name="PeaMonsterEnemy5" parent="." instance=ExtResource("18_t45gd")]
+[node name="PeaMonsterEnemy5" parent="Enemies" instance=ExtResource("18_t45gd")]
 position = Vector2(9317, 728)
 
-[node name="PeaMonsterEnemy7" parent="." instance=ExtResource("18_t45gd")]
+[node name="PeaMonsterEnemy7" parent="Enemies" instance=ExtResource("18_t45gd")]
 position = Vector2(7107, 726)
 
-[node name="PeaMonsterEnemy8" parent="." instance=ExtResource("18_t45gd")]
+[node name="PeaMonsterEnemy8" parent="Enemies" instance=ExtResource("18_t45gd")]
 position = Vector2(6034, 724)
 
-[node name="PeaMonsterEnemy2" parent="." instance=ExtResource("18_t45gd")]
+[node name="PeaMonsterEnemy2" parent="Enemies" instance=ExtResource("18_t45gd")]
 position = Vector2(3286, -148)
 
-[node name="MonsterEnemy" parent="." instance=ExtResource("19_hm1v4")]
+[node name="MonsterEnemy" parent="Enemies" instance=ExtResource("19_hm1v4")]
 position = Vector2(1913, 440)
 
-[node name="MonsterEnemy2" parent="." instance=ExtResource("19_hm1v4")]
+[node name="MonsterEnemy2" parent="Enemies" instance=ExtResource("19_hm1v4")]
 position = Vector2(4481, 834)
 
-[node name="MonsterEnemy3" parent="." instance=ExtResource("19_hm1v4")]
+[node name="MonsterEnemy3" parent="Enemies" instance=ExtResource("19_hm1v4")]
 position = Vector2(7609, 687)
 
-[node name="MonsterEnemy5" parent="." instance=ExtResource("19_hm1v4")]
+[node name="MonsterEnemy5" parent="Enemies" instance=ExtResource("19_hm1v4")]
 position = Vector2(11236, 691)
 
-[node name="MonsterEnemy4" parent="." instance=ExtResource("19_hm1v4")]
+[node name="MonsterEnemy4" parent="Enemies" instance=ExtResource("19_hm1v4")]
 position = Vector2(11910, -694)
+
+[node name="Portal" parent="." instance=ExtResource("14_7b4cb")]
+position = Vector2(13708, -589)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 volume_db = -80.0

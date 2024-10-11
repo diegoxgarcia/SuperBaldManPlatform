@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://cxhdamhyb8gxs"]
+[gd_scene load_steps=82 format=3 uid="uid://cxhdamhyb8gxs"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/player.gd" id="1_u3ie3"]
 [ext_resource type="Script" path="res://Scenes/Resources/player_data.gd" id="2_34bvw"]
@@ -291,6 +291,52 @@ _data = {
 radius = 148.0
 height = 468.0
 
+[sub_resource type="Gradient" id="Gradient_wotii"]
+colors = PackedColorArray(1, 1, 1, 0.141176, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bk7rx"]
+gradient = SubResource("Gradient_wotii")
+
+[sub_resource type="Gradient" id="Gradient_f3446"]
+offsets = PackedFloat32Array(0, 0.449248, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sw701"]
+gradient = SubResource("Gradient_f3446")
+
+[sub_resource type="Curve" id="Curve_qsnhb"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0821429, 94.3643), 0.0, 0.0, 0, 0, Vector2(0.208929, -26.6055), 0.0, 0.0, 0, 0, Vector2(0.298214, 89.2529), 0.0, 0.0, 0, 0, Vector2(0.425, -35.1245), 0.0, 0.0, 0, 0, Vector2(0.533929, 89.2529), 0.0, 0.0, 0, 0, Vector2(0.685714, -36.8283), 0.0, 0.0, 0, 0, Vector2(0.791071, 82.4377), 0.0, 0.0, 0, 0, Vector2(0.876786, -45.3473), 0.0, 0.0, 0, 0, Vector2(0.939286, 80.7339), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 11
+
+[sub_resource type="CurveTexture" id="CurveTexture_hguls"]
+curve = SubResource("Curve_qsnhb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6g4vt"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 1000, 1)
+gravity = Vector3(100, 20, 0)
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = 6.0
+tangential_accel_curve = SubResource("CurveTexture_hguls")
+damping_max = 100.0
+scale_min = 1.5
+scale_max = 1.8
+color_ramp = SubResource("GradientTexture1D_sw701")
+color_initial_ramp = SubResource("GradientTexture1D_bk7rx")
+
+[sub_resource type="Gradient" id="Gradient_xnb6c"]
+offsets = PackedFloat32Array(0, 0.533688, 1)
+colors = PackedColorArray(0.478431, 1, 0.792157, 0, 0.478431, 1, 0.792157, 1, 0.478431, 1, 0.792157, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y3uwm"]
+gradient = SubResource("Gradient_xnb6c")
+width = 1
+height = 32
+fill_to = Vector2(0, 1)
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.4, 0.4)
 collision_mask = 110
@@ -362,6 +408,17 @@ shape = SubResource("CapsuleShape2D_dafh2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.6, 0.6)
+
+[node name="WindLines" type="GPUParticles2D" parent="Camera2D"]
+position = Vector2(-1801, -9.99988)
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_6g4vt")
+texture = SubResource("GradientTexture2D_y3uwm")
+lifetime = 5.0
+preprocess = 2.0
+randomness = 1.0
+trail_enabled = true
+trail_lifetime = 0.6
 
 [connection signal="player_collected" from="Visual/Collecter" to="." method="_on_collecter_player_collected"]
 [connection signal="player_damaged" from="Visual/Damager" to="." method="_on_damager_player_damaged"]
