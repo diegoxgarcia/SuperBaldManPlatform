@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bu1a1nytgr5ne"
+path="res://.godot/imported/Christmas Island (Extended Version).mp3-e62a502b5617c4ca92e17ef5c77fea9d.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Christmas Island (Extended Version).mp3"
+dest_files=["res://.godot/imported/Christmas Island (Extended Version).mp3-e62a502b5617c4ca92e17ef5c77fea9d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

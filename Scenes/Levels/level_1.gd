@@ -10,12 +10,13 @@ extends Node2D
 @onready var ui_animation_player = $CanvasLayer/UI/UIAnimationPlayer
 @onready var portal_label = $CanvasLayer/UI/PortalLabel
 @onready var v_box_container = $CanvasLayer/UI/VBoxContainer
+var level_score : int = 0
 
 func _ready():
-	#health_progress_bar.value = GameManager.match_data.player_health
 	health_progress_bar.value = player.player_data.health
-	score_progress_bar.value = GameManager.match_data.collectables_taken
+	score_progress_bar.value = level_score
 	player.update_match_data.connect(update_player_match_data)
+	player.update_match_score_data.connect(update_player_match_data_score)
 	score_progress_bar.max_value = tile_map_layer.get_children().size()
 	connect_enemy_signal()
 	pass 
@@ -36,11 +37,16 @@ func connect_enemy_signal():
 	for i in enemies.size():
 		enemies[i].enemy_dead.connect(update_enemy_defeated)
 	pass
+	
+func update_player_match_data_score():
+	level_score = level_score + 1
+	score_progress_bar.value = level_score
+	GameManager.match_data.collectables_taken = level_score
+	pass
 
-func update_player_match_data(health : int, score : int):
+func update_player_match_data(health : int):
 	GameManager.match_data.player_health = health
 	health_progress_bar.value = GameManager.match_data.player_health
-	score_progress_bar.value = score
 	if health <= 0:
 		ui_animation_player.play("game_over")
 	pass
