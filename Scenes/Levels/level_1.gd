@@ -11,6 +11,7 @@ extends Node2D
 @onready var portal_label = $CanvasLayer/UI/PortalLabel
 @onready var v_box_container = $CanvasLayer/UI/VBoxContainer
 var level_score : int = 0
+@onready var trans_animation_player = $CanvasLayer/Fade/TransAnimationPlayer
 
 func _ready():
 	health_progress_bar.value = player.player_data.health
@@ -77,10 +78,18 @@ func _on_ui_animation_player_animation_finished(anim_name):
 		"game_over":
 			v_box_container.get_node("ContinueButton").visible = false
 			open_menu(true)
+		
 	pass
 
 func _on_player_go_to_next_level():
-	var next_level = GameManager.get_next_level(self.name.to_lower())
-	GameManager.save_checkpoint_record(GameManager.match_data.collectables_taken, next_level)
-	get_tree().change_scene_to_file(next_level)
+	trans_animation_player.play("fade_in")
 	pass
+
+
+func _on_trans_animation_player_animation_finished(anim_name):
+	match anim_name:
+		"fade_in":
+			var next_level = GameManager.get_next_level(self.name.to_lower())
+			GameManager.save_checkpoint_record(GameManager.match_data.collectables_taken, next_level)
+			get_tree().change_scene_to_file(next_level)
+	pass 
