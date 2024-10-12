@@ -187,5 +187,3 @@ libraries = {
 "": SubResource("AnimationLibrary_x6trr")
 }
 autoplay = "attack"
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]

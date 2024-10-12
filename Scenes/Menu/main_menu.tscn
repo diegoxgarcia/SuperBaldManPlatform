@@ -117,16 +117,16 @@ theme_override_fonts/font = ExtResource("3_lhmpw")
 text = "START GAME"
 
 [node name="TestButton" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3_lhmpw")
 text = "TEST CHARACTERS"
 
-[node name="CreditButton" type="Button" parent="VBoxContainer"]
+[node name="Audio" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3_lhmpw")
-text = "CREDITS"
+text = "AUDIO MENU"
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -134,7 +134,14 @@ size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3_lhmpw")
 text = "CONTINUE"
 
+[node name="CreditButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_lhmpw")
+text = "CREDITS"
+
 [connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/TestButton" to="." method="_on_test_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/CreditButton" to="." method="_on_credit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Audio" to="." method="_on_audio_pressed"]
 [connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditButton" to="." method="_on_credit_button_pressed"]

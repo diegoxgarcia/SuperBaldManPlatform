@@ -11,6 +11,7 @@ extends CharacterBody2D
 signal go_to_next_level
 signal update_match_data
 signal update_match_score_data
+signal portal_opened_shake_cam
 
 func _ready():
 	update_match_data.emit(player_data.health, player_data.score)
@@ -24,7 +25,6 @@ func _on_collecter_player_collected(area):
 	if area.is_in_group("Collectibles"):
 		player_data.score = player_data.score + 1
 		update_match_score_data.emit()
-		#update_match_data.emit(player_data.health, player_data.score)
 		area.queue_free()
 	elif area.is_in_group("Weapons"):
 		area.queue_free()

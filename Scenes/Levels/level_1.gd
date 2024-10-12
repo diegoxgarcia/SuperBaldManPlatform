@@ -61,6 +61,7 @@ func _on_score_progress_bar_value_changed(value):
 	if value == score_progress_bar.max_value:
 		portal_label.visible = true
 		portal.open_portal()
+		player.portal_opened_shake_cam.emit()
 	pass
 
 func _on_continue_button_pressed():

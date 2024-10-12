@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://cxhdamhyb8gxs"]
+[gd_scene load_steps=87 format=3 uid="uid://cxhdamhyb8gxs"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/player.gd" id="1_u3ie3"]
 [ext_resource type="Script" path="res://Scenes/Resources/player_data.gd" id="2_34bvw"]
@@ -60,6 +60,7 @@
 [ext_resource type="PackedScene" uid="uid://cjx4mqq877q68" path="res://Scenes/Components/collecter.tscn" id="57_w1bxf"]
 [ext_resource type="PackedScene" uid="uid://85wpovfy5xre" path="res://Scenes/Components/damager.tscn" id="58_fc7mf"]
 [ext_resource type="Texture2D" uid="uid://df5s5kjcud1sj" path="res://Assets/Particles/Dust.png" id="60_7e46p"]
+[ext_resource type="Script" path="res://Scenes/Characters/camera_2d.gd" id="61_jyq0b"]
 
 [sub_resource type="Resource" id="Resource_n2jln"]
 script = ExtResource("2_34bvw")
@@ -478,6 +479,7 @@ shape = SubResource("CapsuleShape2D_dafh2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.6, 0.6)
+script = ExtResource("61_jyq0b")
 
 [node name="WindLines" type="GPUParticles2D" parent="Camera2D"]
 position = Vector2(-1801, -9.99988)
