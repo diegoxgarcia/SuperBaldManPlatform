@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://c73pdks3qx30x"]
+[gd_scene load_steps=32 format=4 uid="uid://c73pdks3qx30x"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/level_2.gd" id="1_d4kh4"]
 [ext_resource type="Texture2D" uid="uid://dwm41jj4lw7g6" path="res://Assets/Progress/BarSystem/BarBackground.png" id="2_8khae"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b07e0psn40c5l" path="res://Assets/GUI/white_home.png" id="12_5q4ah"]
 [ext_resource type="PackedScene" uid="uid://cxhdamhyb8gxs" path="res://Scenes/Characters/player.tscn" id="13_3lv7l"]
 [ext_resource type="PackedScene" uid="uid://lsahto6ndb8i" path="res://Scenes/Collectables/portal.tscn" id="14_7b4cb"]
+[ext_resource type="PackedScene" uid="uid://b7hjstv7sifem" path="res://Scenes/Menu/audio_menu.tscn" id="16_0dths"]
 [ext_resource type="PackedScene" uid="uid://cajv8vgfny11m" path="res://Scenes/Characters/pea_monster_enemy.tscn" id="18_t45gd"]
 [ext_resource type="PackedScene" uid="uid://wvuen8h80w5a" path="res://Scenes/Characters/monster_enemy.tscn" id="19_hm1v4"]
 
@@ -590,7 +591,7 @@ expand_icon = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("9_uf413")
-text = "AUDIO"
+text = "AUDIO MENU"
 icon = ExtResource("11_25b2x")
 expand_icon = true
 
@@ -601,6 +602,11 @@ theme_override_fonts/font = ExtResource("9_uf413")
 text = "EXIT"
 icon = ExtResource("12_5q4ah")
 expand_icon = true
+
+[node name="AudioMenu" parent="CanvasLayer/UI" instance=ExtResource("16_0dths")]
+process_mode = 3
+visible = false
+layout_mode = 1
 
 [node name="UIAnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI"]
 libraries = {
@@ -675,5 +681,6 @@ volume_db = -80.0
 
 [connection signal="value_changed" from="CanvasLayer/UI/ScoreProgressBar" to="." method="_on_score_progress_bar_value_changed"]
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/AudioButton" to="." method="_on_audio_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="go_to_next_level" from="Player" to="." method="_on_player_go_to_next_level"]

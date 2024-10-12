@@ -12,6 +12,7 @@ extends Node2D
 @onready var v_box_container = $CanvasLayer/UI/VBoxContainer
 var level_score : int = 0
 @onready var trans_animation_player = $CanvasLayer/Fade/TransAnimationPlayer
+@onready var audio_menu = $CanvasLayer/UI/AudioMenu
 
 func _ready():
 	health_progress_bar.value = player.player_data.health
@@ -94,3 +95,8 @@ func _on_trans_animation_player_animation_finished(anim_name):
 			GameManager.save_checkpoint_record(GameManager.match_data.collectables_taken, next_level)
 			get_tree().change_scene_to_file(next_level)
 	pass 
+
+
+func _on_audio_button_pressed():
+	audio_menu.show_and_hide(v_box_container)
+	pass

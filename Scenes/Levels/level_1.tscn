@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://b434sj85aqidb"]
+[gd_scene load_steps=32 format=4 uid="uid://b434sj85aqidb"]
 
 [ext_resource type="Texture2D" uid="uid://cmyxu37qdio6w" path="res://Assets/TileSet/Background.png" id="1_cnyd1"]
 [ext_resource type="PackedScene" uid="uid://cxhdamhyb8gxs" path="res://Scenes/Characters/player.tscn" id="1_gbdjr"]
@@ -19,6 +19,7 @@
 [ext_resource type="FontFile" uid="uid://3l1aqhqnv27n" path="res://Assets/Fonts/kenpixel.ttf" id="13_kkjnp"]
 [ext_resource type="Texture2D" uid="uid://bfpafwmhvimob" path="res://Assets/GUI/white_musicOn.png" id="14_kf0d7"]
 [ext_resource type="Texture2D" uid="uid://b07e0psn40c5l" path="res://Assets/GUI/white_home.png" id="15_xdfxl"]
+[ext_resource type="PackedScene" uid="uid://b7hjstv7sifem" path="res://Scenes/Menu/audio_menu.tscn" id="16_rwobj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdfml"]
 texture = ExtResource("2_vss5e")
@@ -552,7 +553,7 @@ expand_icon = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("13_kkjnp")
-text = "AUDIO"
+text = "AUDIO MENU"
 icon = ExtResource("14_kf0d7")
 expand_icon = true
 
@@ -563,6 +564,11 @@ theme_override_fonts/font = ExtResource("13_kkjnp")
 text = "EXIT"
 icon = ExtResource("15_xdfxl")
 expand_icon = true
+
+[node name="AudioMenu" parent="CanvasLayer/UI" instance=ExtResource("16_rwobj")]
+process_mode = 3
+visible = false
+layout_mode = 1
 
 [node name="UIAnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI"]
 libraries = {
@@ -628,6 +634,7 @@ volume_db = -80.0
 
 [connection signal="value_changed" from="CanvasLayer/UI/ScoreProgressBar" to="." method="_on_score_progress_bar_value_changed"]
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/AudioButton" to="." method="_on_audio_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="animation_finished" from="CanvasLayer/UI/UIAnimationPlayer" to="." method="_on_ui_animation_player_animation_finished"]
 [connection signal="animation_finished" from="CanvasLayer/Fade/TransAnimationPlayer" to="." method="_on_trans_animation_player_animation_finished"]

@@ -1,0 +1,102 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7hjstv7sifem"]
+
+[ext_resource type="Script" path="res://Scenes/Menu/audio_menu.gd" id="1_lbn5i"]
+[ext_resource type="FontFile" uid="uid://3l1aqhqnv27n" path="res://Assets/Fonts/kenpixel.ttf" id="2_h2fu3"]
+
+[node name="AudioMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lbn5i")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.243
+anchor_top = 0.259
+anchor_right = 0.687
+anchor_bottom = 0.704
+offset_left = 0.0639954
+offset_top = 0.167999
+offset_right = 0.575928
+offset_bottom = -0.192047
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.329
+anchor_top = 0.028
+anchor_right = 0.672
+anchor_bottom = 0.135
+offset_left = 0.0519867
+offset_top = -0.0640001
+offset_right = -0.564026
+offset_bottom = 0.119999
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_h2fu3")
+theme_override_font_sizes/font_size = 20
+text = "AUDIO OPTIONS"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.148
+anchor_top = 0.194
+anchor_right = 0.852
+anchor_bottom = 0.806
+offset_left = 0.223999
+offset_top = 54.128
+offset_right = -0.22403
+offset_bottom = -54.128
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MasterLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_h2fu3")
+text = "Master Volume"
+
+[node name="MasterAudioSlider" type="HSlider" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="MusicLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_h2fu3")
+text = "Music Volume
+"
+
+[node name="MusicAudioSlider" type="HSlider" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="SFXLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_h2fu3")
+text = "SFX Volume"
+
+[node name="SFXAudioSlider" type="HSlider" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="BackButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_h2fu3")
+text = "EXIT"
+
+[connection signal="value_changed" from="Panel/VBoxContainer/MasterAudioSlider" to="." method="_on_master_audio_slider_value_changed"]
+[connection signal="value_changed" from="Panel/VBoxContainer/MusicAudioSlider" to="." method="_on_music_audio_slider_value_changed"]
+[connection signal="value_changed" from="Panel/VBoxContainer/SFXAudioSlider" to="." method="_on_sfx_audio_slider_value_changed"]
+[connection signal="pressed" from="Panel/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

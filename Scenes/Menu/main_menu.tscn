@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cco6yvch0b6h6"]
+[gd_scene load_steps=11 format=3 uid="uid://cco6yvch0b6h6"]
 
 [ext_resource type="Script" path="res://Scenes/Menu/main_menu.gd" id="1_3htgi"]
 [ext_resource type="FontFile" uid="uid://cywvmrrjs6omw" path="res://Assets/Fonts/kenvector_future.ttf" id="2_k5k7n"]
 [ext_resource type="FontFile" uid="uid://cvxst13mrkt7b" path="res://Assets/Fonts/kenpixel_future_square.ttf" id="3_lhmpw"]
 [ext_resource type="Texture2D" uid="uid://pgp00s8jd775" path="res://Assets/MenuResources/superbaldman.jpeg" id="4_r6ot7"]
+[ext_resource type="PackedScene" uid="uid://b7hjstv7sifem" path="res://Scenes/Menu/audio_menu.tscn" id="5_iedwj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3no7f"]
 font = ExtResource("2_k5k7n")
@@ -125,6 +126,7 @@ text = "TEST CHARACTERS"
 
 [node name="Audio" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3_lhmpw")
 text = "AUDIO MENU"
 
@@ -134,14 +136,77 @@ size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3_lhmpw")
 text = "CONTINUE"
 
+[node name="HowToPlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_lhmpw")
+text = "HOW TO PLAY"
+
 [node name="CreditButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3_lhmpw")
 text = "CREDITS"
 
+[node name="HowToPlayPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.368
+anchor_top = 0.395
+anchor_right = 0.632
+anchor_bottom = 0.605
+offset_left = -39.936
+offset_top = 0.0399933
+offset_right = 31.936
+offset_bottom = -0.0400085
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="HowToPlayPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.857
+anchor_right = 1.0
+anchor_bottom = 0.235
+offset_left = 0.0239868
+offset_bottom = 0.0399971
+grow_horizontal = 2
+
+[node name="CloseButton" type="Button" parent="HowToPlayPanel/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.969
+offset_bottom = -0.00800133
+text = "X"
+
+[node name="HowToPlay" type="Label" parent="HowToPlayPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.037
+anchor_right = 1.105
+anchor_bottom = 0.971
+offset_top = -0.0320001
+offset_right = -39.48
+offset_bottom = -0.056015
+grow_horizontal = 2
+grow_vertical = 2
+text = "Left : A Key or Left Stick
+Right : D Key or Right Stick
+Jump: Space Key or A Button
+Attack: Ctrl or X Button
+Menu: Escape"
+horizontal_alignment = 1
+
+[node name="AudioMenu" parent="." instance=ExtResource("5_iedwj")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/TestButton" to="." method="_on_test_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Audio" to="." method="_on_audio_pressed"]
 [connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditButton" to="." method="_on_credit_button_pressed"]
+[connection signal="pressed" from="HowToPlayPanel/Panel/CloseButton" to="." method="_on_close_button_pressed"]
