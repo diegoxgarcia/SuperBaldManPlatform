@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://cxhdamhyb8gxs"]
+[gd_scene load_steps=86 format=3 uid="uid://cxhdamhyb8gxs"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/player.gd" id="1_u3ie3"]
 [ext_resource type="Script" path="res://Scenes/Resources/player_data.gd" id="2_34bvw"]
@@ -59,6 +59,7 @@
 [ext_resource type="Texture2D" uid="uid://bag20lafjtnux" path="res://Assets/Player/03-Throw/PS_BALD GUY_Throw_007.png" id="56_qf5si"]
 [ext_resource type="PackedScene" uid="uid://cjx4mqq877q68" path="res://Scenes/Components/collecter.tscn" id="57_w1bxf"]
 [ext_resource type="PackedScene" uid="uid://85wpovfy5xre" path="res://Scenes/Components/damager.tscn" id="58_fc7mf"]
+[ext_resource type="Texture2D" uid="uid://df5s5kjcud1sj" path="res://Assets/Particles/Dust.png" id="60_7e46p"]
 
 [sub_resource type="Resource" id="Resource_n2jln"]
 script = ExtResource("2_34bvw")
@@ -224,6 +225,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("38_y1k8j"), ExtResource("39_ow16t"), ExtResource("40_1g2gn"), ExtResource("41_gv887"), ExtResource("42_4m4av")]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual/BloodHitParticles")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_xbyi5"]
 resource_name = "idle"
@@ -274,6 +289,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("39_nw6bh"), ExtResource("40_2m3sb"), ExtResource("41_qua1n"), ExtResource("42_ok8jv"), ExtResource("43_4d083"), ExtResource("44_cmrqm"), ExtResource("45_o67he"), ExtResource("46_7wcgd"), ExtResource("47_2hugr"), ExtResource("48_43451")]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual/FootDustParticles")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fbhrj"]
 _data = {
@@ -286,6 +315,21 @@ _data = {
 "jump": SubResource("Animation_gbx5w"),
 "run": SubResource("Animation_fo63x")
 }
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lh5px"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 64.4
+gravity = Vector3(0, 0, 0)
+turbulence_enabled = true
+
+[sub_resource type="Curve" id="Curve_glf81"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.898734, 0.282209), -2.21961, -2.21961, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_mv34d"]
+offsets = PackedFloat32Array(0, 0.738676, 1)
+colors = PackedColorArray(1, 0.1735, 0.13, 1, 1, 0.377965, 0.345226, 0.752613, 1, 1, 1, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dafh2"]
 radius = 148.0
@@ -401,6 +445,32 @@ autoplay = "idle"
 
 [node name="WeaponHandler" type="Node2D" parent="Visual"]
 position = Vector2(-444, 72)
+
+[node name="FootDustParticles" type="GPUParticles2D" parent="Visual"]
+modulate = Color(0.62, 0.62, 0.62, 0.658824)
+position = Vector2(120, 220)
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_lh5px")
+texture = ExtResource("60_7e46p")
+lifetime = 0.3
+one_shot = true
+randomness = 0.47
+
+[node name="BloodHitParticles" type="CPUParticles2D" parent="Visual"]
+position = Vector2(-40, -200)
+emitting = false
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_glf81")
+color_ramp = SubResource("Gradient_mv34d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, -14)
