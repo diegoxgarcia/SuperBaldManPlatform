@@ -6,7 +6,10 @@ var match_data = MatchData.new()
 
 var game_data = {
 	"score" : 0,
-	"checkpoint_level" : ""
+	"checkpoint_level" : "",
+	"master_volume" : 0.0,
+	"music_volume" : 0.0,
+	"sfx_volume" : 0.0
 }
 
 func save_checkpoint_record(score : int, checkpoint : String):
