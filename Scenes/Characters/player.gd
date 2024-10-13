@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var state_machine = $StateMachine
 @onready var visual = $Visual
 @onready var weapon_handler = $Visual/WeaponHandler
+@onready var sfx = $SFX
 
 signal go_to_next_level
 signal update_match_data
@@ -25,6 +26,7 @@ func _on_collecter_player_collected(area):
 	if area.is_in_group("Collectibles"):
 		player_data.score = player_data.score + 1
 		update_match_score_data.emit()
+		sfx.get_node("VinylScratch").play()
 		area.queue_free()
 	elif area.is_in_group("Weapons"):
 		area.queue_free()

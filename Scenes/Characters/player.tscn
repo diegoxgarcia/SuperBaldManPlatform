@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://cxhdamhyb8gxs"]
+[gd_scene load_steps=91 format=3 uid="uid://cxhdamhyb8gxs"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/player.gd" id="1_u3ie3"]
 [ext_resource type="Script" path="res://Scenes/Resources/player_data.gd" id="2_34bvw"]
@@ -61,6 +61,10 @@
 [ext_resource type="PackedScene" uid="uid://85wpovfy5xre" path="res://Scenes/Components/damager.tscn" id="58_fc7mf"]
 [ext_resource type="Texture2D" uid="uid://df5s5kjcud1sj" path="res://Assets/Particles/Dust.png" id="60_7e46p"]
 [ext_resource type="Script" path="res://Scenes/Characters/camera_2d.gd" id="61_jyq0b"]
+[ext_resource type="AudioStream" uid="uid://bgc0ognqy1dk0" path="res://Assets/SFX/scratch.wav" id="62_n63nx"]
+[ext_resource type="AudioStream" uid="uid://t81vnk82h3q3" path="res://Assets/SFX/mic.wav" id="63_r2b1e"]
+[ext_resource type="AudioStream" uid="uid://csvjfar055ud3" path="res://Assets/SFX/hit.wav" id="64_4knu7"]
+[ext_resource type="AudioStream" uid="uid://c12rjic81g33v" path="res://Assets/SFX/dead.wav" id="65_dnd21"]
 
 [sub_resource type="Resource" id="Resource_n2jln"]
 script = ExtResource("2_34bvw")
@@ -127,6 +131,42 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(-4, -14)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SFX/Mic:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SFX/Hit:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SFX/Dead:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ja4yy"]
 resource_name = "atack"
@@ -154,6 +194,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-92, 72), Vector2(-124, 72), Vector2(-156, 72), Vector2(-188, 72), Vector2(-212, 72), Vector2(-212, 40), Vector2(-212, 40), Vector2(-196, 96)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFX/Mic:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_je0cc"]
@@ -193,6 +245,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-4, -14), Vector2(72, 54), Vector2(72, 146), Vector2(72, 146)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SFX/Dead:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_77eoo"]
@@ -239,6 +303,18 @@ tracks/1/keys = {
 "args": [],
 "method": &"restart"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFX/Hit:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_xbyi5"]
@@ -491,6 +567,24 @@ preprocess = 2.0
 randomness = 1.0
 trail_enabled = true
 trail_lifetime = 0.6
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="VinylScratch" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("62_n63nx")
+bus = &"SFX"
+
+[node name="Mic" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("63_r2b1e")
+bus = &"SFX"
+
+[node name="Hit" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("64_4knu7")
+bus = &"SFX"
+
+[node name="Dead" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("65_dnd21")
+bus = &"SFX"
 
 [connection signal="player_collected" from="Visual/Collecter" to="." method="_on_collecter_player_collected"]
 [connection signal="player_damaged" from="Visual/Damager" to="." method="_on_damager_player_damaged"]

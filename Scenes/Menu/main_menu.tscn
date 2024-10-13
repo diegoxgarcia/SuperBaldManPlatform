@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cco6yvch0b6h6"]
+[gd_scene load_steps=13 format=3 uid="uid://cco6yvch0b6h6"]
 
 [ext_resource type="Script" path="res://Scenes/Menu/main_menu.gd" id="1_3htgi"]
 [ext_resource type="FontFile" uid="uid://cywvmrrjs6omw" path="res://Assets/Fonts/kenvector_future.ttf" id="2_k5k7n"]
 [ext_resource type="FontFile" uid="uid://cvxst13mrkt7b" path="res://Assets/Fonts/kenpixel_future_square.ttf" id="3_lhmpw"]
 [ext_resource type="Texture2D" uid="uid://pgp00s8jd775" path="res://Assets/MenuResources/superbaldman.jpeg" id="4_r6ot7"]
 [ext_resource type="PackedScene" uid="uid://b7hjstv7sifem" path="res://Scenes/Menu/audio_menu.tscn" id="5_iedwj"]
+[ext_resource type="AudioStream" uid="uid://7ufurpw3unbc" path="res://Assets/Music/RECOIL-Uranokemia_Shunt.mp3" id="6_0tnb7"]
+[ext_resource type="AudioStream" uid="uid://bxbytmttu843" path="res://Assets/SFX/superbaldman.wav" id="7_tyda0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3no7f"]
 font = ExtResource("2_k5k7n")
@@ -32,6 +34,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(334.5, 64)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Music:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Music:autoplay")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_wpb8a"]
 resource_name = "title_anim"
@@ -46,6 +72,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(280, 88), Vector2(462.5, 88), Vector2(180, 88), Vector2(380, 88), Vector2(254.5, 88), Vector2(366.5, 88), Vector2(334.5, 88), Vector2(281, 88)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Music:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Music:autoplay")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ifnvk"]
@@ -78,10 +128,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -241.5
-offset_top = 64.0
-offset_right = 348.5
-offset_bottom = 127.0
+offset_left = -296.0
+offset_top = 88.0
+offset_right = 294.0
+offset_bottom = 151.0
 grow_horizontal = 2
 text = "Super Bald Man"
 label_settings = SubResource("LabelSettings_3no7f")
@@ -202,6 +252,17 @@ horizontal_alignment = 1
 [node name="AudioMenu" parent="." instance=ExtResource("5_iedwj")]
 visible = false
 layout_mode = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0tnb7")
+volume_db = -80.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[node name="TitleIntro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_tyda0")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/TestButton" to="." method="_on_test_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://b434sj85aqidb"]
+[gd_scene load_steps=37 format=4 uid="uid://b434sj85aqidb"]
 
 [ext_resource type="Texture2D" uid="uid://cmyxu37qdio6w" path="res://Assets/TileSet/Background.png" id="1_cnyd1"]
 [ext_resource type="PackedScene" uid="uid://cxhdamhyb8gxs" path="res://Scenes/Characters/player.tscn" id="1_gbdjr"]
@@ -20,6 +20,10 @@
 [ext_resource type="Texture2D" uid="uid://bfpafwmhvimob" path="res://Assets/GUI/white_musicOn.png" id="14_kf0d7"]
 [ext_resource type="Texture2D" uid="uid://b07e0psn40c5l" path="res://Assets/GUI/white_home.png" id="15_xdfxl"]
 [ext_resource type="PackedScene" uid="uid://b7hjstv7sifem" path="res://Scenes/Menu/audio_menu.tscn" id="16_rwobj"]
+[ext_resource type="AudioStream" uid="uid://c7l4kfsf0y0r1" path="res://Assets/Music/Level1.mp3" id="21_mq5ql"]
+[ext_resource type="AudioStream" uid="uid://da0dntemwau56" path="res://Assets/Music/Portal Theme.mp3" id="22_hfitx"]
+[ext_resource type="AudioStream" uid="uid://tmukw30v6w16" path="res://Assets/SFX/youloose.wav" id="23_h12il"]
+[ext_resource type="AudioStream" uid="uid://cccs2iosd0ddv" path="res://Assets/SFX/portal.wav" id="24_2fr88"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdfml"]
 texture = ExtResource("2_vss5e")
@@ -365,6 +369,23 @@ _data = {
 "fade_out": SubResource("Animation_7p7r1")
 }
 
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_ne1h2"]
+clip_count = 2
+clip_0/name = &"Level 1"
+clip_0/stream = ExtResource("21_mq5ql")
+clip_0/auto_advance = 0
+clip_1/name = &"Portal Theme"
+clip_1/stream = ExtResource("22_hfitx")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 1,
+"to_time": 1
+}
+}
+
 [node name="Level_1" type="Node2D"]
 script = ExtResource("1_ygtmi")
 
@@ -630,7 +651,22 @@ position = Vector2(8230, -433)
 position = Vector2(12750, 661)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = SubResource("AudioStreamInteractive_ne1h2")
 volume_db = -80.0
+autoplay = true
+bus = &"Music"
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="YouLoose" type="AudioStreamPlayer" parent="SFX"]
+process_mode = 3
+stream = ExtResource("23_h12il")
+bus = &"SFX"
+
+[node name="PortalOpen" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("24_2fr88")
+bus = &"SFX"
 
 [connection signal="value_changed" from="CanvasLayer/UI/ScoreProgressBar" to="." method="_on_score_progress_bar_value_changed"]
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

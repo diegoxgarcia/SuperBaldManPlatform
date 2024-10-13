@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://c73pdks3qx30x"]
+[gd_scene load_steps=37 format=4 uid="uid://c73pdks3qx30x"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/level_2.gd" id="1_d4kh4"]
 [ext_resource type="Texture2D" uid="uid://dwm41jj4lw7g6" path="res://Assets/Progress/BarSystem/BarBackground.png" id="2_8khae"]
@@ -20,6 +20,10 @@
 [ext_resource type="PackedScene" uid="uid://b7hjstv7sifem" path="res://Scenes/Menu/audio_menu.tscn" id="16_0dths"]
 [ext_resource type="PackedScene" uid="uid://cajv8vgfny11m" path="res://Scenes/Characters/pea_monster_enemy.tscn" id="18_t45gd"]
 [ext_resource type="PackedScene" uid="uid://wvuen8h80w5a" path="res://Scenes/Characters/monster_enemy.tscn" id="19_hm1v4"]
+[ext_resource type="AudioStream" uid="uid://h0gw0jbudstu" path="res://Assets/Music/Level2.mp3" id="21_3pn4a"]
+[ext_resource type="AudioStream" uid="uid://bj257vlsatu5d" path="res://Assets/Music/For Fun (DJ Cod Mix) - Portal Final.mp3" id="22_7tinv"]
+[ext_resource type="AudioStream" uid="uid://tmukw30v6w16" path="res://Assets/SFX/youloose.wav" id="23_dd4ma"]
+[ext_resource type="AudioStream" uid="uid://cccs2iosd0ddv" path="res://Assets/SFX/portal.wav" id="24_8rlhw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k1i0b"]
 texture = ExtResource("3_hyig4")
@@ -373,6 +377,23 @@ _data = {
 "fade_out": SubResource("Animation_7p7r1")
 }
 
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_xv8na"]
+clip_count = 2
+clip_0/name = &"Level 2"
+clip_0/stream = ExtResource("21_3pn4a")
+clip_0/auto_advance = 0
+clip_1/name = &"Portal Theme"
+clip_1/stream = ExtResource("22_7tinv")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(0, 0): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+}
+}
+
 [node name="Level_2" type="Node2D"]
 script = ExtResource("1_d4kh4")
 
@@ -677,10 +698,27 @@ position = Vector2(11910, -694)
 position = Vector2(13708, -589)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = SubResource("AudioStreamInteractive_xv8na")
 volume_db = -80.0
+autoplay = true
+bus = &"Music"
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="YouLoose" type="AudioStreamPlayer" parent="SFX"]
+process_mode = 3
+stream = ExtResource("23_dd4ma")
+bus = &"SFX"
+
+[node name="PortalOpen" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("24_8rlhw")
+bus = &"SFX"
 
 [connection signal="value_changed" from="CanvasLayer/UI/ScoreProgressBar" to="." method="_on_score_progress_bar_value_changed"]
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/AudioButton" to="." method="_on_audio_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="animation_finished" from="CanvasLayer/UI/UIAnimationPlayer" to="." method="_on_ui_animation_player_animation_finished"]
+[connection signal="animation_finished" from="CanvasLayer/Fade/TransAnimationPlayer" to="." method="_on_trans_animation_player_animation_finished"]
 [connection signal="go_to_next_level" from="Player" to="." method="_on_player_go_to_next_level"]

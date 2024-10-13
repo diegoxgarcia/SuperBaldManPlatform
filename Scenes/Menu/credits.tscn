@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4bpmr3x5tu34"]
+[gd_scene load_steps=10 format=3 uid="uid://c4bpmr3x5tu34"]
 
 [ext_resource type="Script" path="res://Scenes/Menu/credits.gd" id="1_kqaeo"]
 [ext_resource type="FontFile" uid="uid://bfgv1ni2bb3w2" path="res://Assets/Fonts/kenpixel_blocks.ttf" id="1_kx2v6"]
+[ext_resource type="Texture2D" uid="uid://bxv78lkj0htn2" path="res://Assets/MenuResources/godot.webp" id="2_4ovw5"]
+[ext_resource type="AudioStream" uid="uid://7ufurpw3unbc" path="res://Assets/Music/RECOIL-Uranokemia_Shunt.mp3" id="3_1yjbn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2edxu"]
 font = ExtResource("1_kx2v6")
@@ -85,6 +87,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kqaeo")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4ovw5")
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 12
@@ -118,3 +129,9 @@ color_ramp = SubResource("Gradient_px41v")
 libraries = {
 "": SubResource("AnimationLibrary_jblbr")
 }
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1yjbn")
+autoplay = true
+bus = &"Music"
+parameters/looping = true

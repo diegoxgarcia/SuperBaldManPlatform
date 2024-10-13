@@ -13,6 +13,9 @@ extends Node2D
 var level_score : int = 0
 @onready var trans_animation_player = $CanvasLayer/Fade/TransAnimationPlayer
 @onready var audio_menu = $CanvasLayer/UI/AudioMenu
+@onready var music = $Music
+@onready var sfx = $SFX
+
 
 func _ready():
 	health_progress_bar.value = player.player_data.health
@@ -62,6 +65,8 @@ func _on_score_progress_bar_value_changed(value):
 	if value == score_progress_bar.max_value:
 		portal_label.visible = true
 		portal.open_portal()
+		sfx.get_node("PortalOpen").play()
+		music["parameters/switch_to_clip"] = "Portal Theme"
 		player.portal_opened_shake_cam.emit()
 	pass
 
@@ -78,6 +83,7 @@ func _on_exit_button_pressed():
 func _on_ui_animation_player_animation_finished(anim_name):
 	match anim_name:
 		"game_over":
+			sfx.get_node("YouLoose").play()
 			v_box_container.get_node("ContinueButton").visible = false
 			open_menu(true)
 		

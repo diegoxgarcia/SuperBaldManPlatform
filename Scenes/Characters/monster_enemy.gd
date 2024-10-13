@@ -11,6 +11,7 @@ extends CharacterBody2D
 var player : Player
 @onready var dead_particles = $Visual/DeadParticles
 var enemy_health : int
+@onready var dead_sfx = $DeadSFX
 
 signal enemy_dead
 
@@ -69,6 +70,7 @@ func enemy_damaged(anim_forward : String, anim_backward : String, area : Area2D)
 
 func dead():
 	set_physics_process(false)
+	dead_sfx.play()
 	proximity_player_detector.clear_target_position()
 	dead_particles.emitting = true
 	pass

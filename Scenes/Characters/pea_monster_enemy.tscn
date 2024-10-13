@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cajv8vgfny11m"]
+[gd_scene load_steps=37 format=3 uid="uid://cajv8vgfny11m"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/pea_monster_enemy.gd" id="1_pq8mr"]
 [ext_resource type="Texture2D" uid="uid://bxbriw2p6w01r" path="res://Assets/Enemies/PeaMonster/idle/frame-1.png" id="2_3hskw"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://07o1e6mr7gi6" path="res://Assets/Enemies/PeaMonster/walking/frame-7.png" id="16_epati"]
 [ext_resource type="Texture2D" uid="uid://bg3div2end330" path="res://Assets/Enemies/PeaMonster/walking/frame-8.png" id="17_xipvo"]
 [ext_resource type="PackedScene" uid="uid://85wpovfy5xre" path="res://Scenes/Components/damager.tscn" id="18_tpn1j"]
+[ext_resource type="AudioStream" uid="uid://bqfwscujeg1ow" path="res://Assets/SFX/monsterdead.WAV" id="21_4odyi"]
 [ext_resource type="PackedScene" uid="uid://ddbye016jmi7s" path="res://Scenes/Components/proximity_player_detector.tscn" id="21_hhhtw"]
 
 [sub_resource type="Resource" id="Resource_pqt3i"]
@@ -355,5 +356,9 @@ grow_horizontal = 2
 grow_vertical = 2
 fill_mode = 1
 show_percentage = false
+
+[node name="DeadSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_4odyi")
+bus = &"SFX"
 
 [connection signal="finished" from="Visual/DeadParticles" to="." method="_on_dead_particles_finished"]
