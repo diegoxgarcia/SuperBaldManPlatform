@@ -11,7 +11,8 @@ extends CharacterBody2D
 var player : Player
 @onready var dead_particles = $Visual/DeadParticles
 var enemy_health : int
-@onready var dead_sfx = $DeadSFX
+@onready var dead_sfx = $SFX/DeadSFX
+@onready var hit = $SFX/Hit
 
 signal enemy_dead
 
@@ -58,6 +59,7 @@ func follow_player():
 func enemy_damaged(anim_forward : String, anim_backward : String, area : Area2D):
 	enemy_health = enemy_health - (area.weapon_data.damage * enemy_data.damage_multiplier)
 	health_bar.value = enemy_health
+	hit.play()
 	
 	if enemy_health <= 0:
 		dead()
