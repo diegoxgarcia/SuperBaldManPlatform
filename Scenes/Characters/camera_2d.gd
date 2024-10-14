@@ -32,5 +32,6 @@ func random_offset():
 	pass
 	
 func shake_camera():
+	Input.start_joy_vibration(0, 1, 1, 1)
 	flag_shake = true
 	pass
