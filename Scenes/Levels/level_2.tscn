@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://c73pdks3qx30x"]
+[gd_scene load_steps=39 format=4 uid="uid://c73pdks3qx30x"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/level_2.gd" id="1_d4kh4"]
 [ext_resource type="Texture2D" uid="uid://dwm41jj4lw7g6" path="res://Assets/Progress/BarSystem/BarBackground.png" id="2_8khae"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bfpafwmhvimob" path="res://Assets/GUI/white_musicOn.png" id="11_25b2x"]
 [ext_resource type="Texture2D" uid="uid://b07e0psn40c5l" path="res://Assets/GUI/white_home.png" id="12_5q4ah"]
 [ext_resource type="PackedScene" uid="uid://cxhdamhyb8gxs" path="res://Scenes/Characters/player.tscn" id="13_3lv7l"]
+[ext_resource type="Texture2D" uid="uid://ckpc4eaewi1y1" path="res://Assets/Collectables/vinyl.png" id="13_682tv"]
 [ext_resource type="PackedScene" uid="uid://lsahto6ndb8i" path="res://Scenes/Collectables/portal.tscn" id="14_7b4cb"]
 [ext_resource type="PackedScene" uid="uid://b7hjstv7sifem" path="res://Scenes/Menu/audio_menu.tscn" id="16_0dths"]
 [ext_resource type="PackedScene" uid="uid://cajv8vgfny11m" path="res://Scenes/Characters/pea_monster_enemy.tscn" id="18_t45gd"]
@@ -110,16 +111,16 @@ physics_layer_0/collision_layer = 32
 physics_layer_0/collision_mask = 3
 sources/1 = SubResource("TileSetAtlasSource_k1i0b")
 
+[sub_resource type="LabelSettings" id="LabelSettings_pv2kt"]
+font = ExtResource("6_8x4a6")
+font_size = 25
+
 [sub_resource type="LabelSettings" id="LabelSettings_446a8"]
 font = ExtResource("5_bxcr2")
 font_size = 20
 shadow_size = 8
 shadow_color = Color(0.0136768, 0.0986888, 0.052435, 1)
 shadow_offset = Vector2(2, 3)
-
-[sub_resource type="LabelSettings" id="LabelSettings_pv2kt"]
-font = ExtResource("6_8x4a6")
-font_size = 25
 
 [sub_resource type="Animation" id="Animation_q6egx"]
 length = 0.001
@@ -252,6 +253,13 @@ _data = {
 "RESET": SubResource("Animation_q6egx"),
 "game_over": SubResource("Animation_ewu7r")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_0511y"]
+font = ExtResource("5_bxcr2")
+font_size = 20
+shadow_size = 8
+shadow_color = Color(0.0136768, 0.0986888, 0.052435, 1)
+shadow_offset = Vector2(2, 3)
 
 [sub_resource type="Animation" id="Animation_2i67l"]
 length = 0.001
@@ -476,31 +484,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HealthProgressBar" type="TextureProgressBar" parent="CanvasLayer/UI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -64.0
-offset_right = 810.0
-offset_bottom = 920.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.25, 0.2)
-texture_under = ExtResource("2_8khae")
-texture_over = ExtResource("3_oypmg")
-texture_progress = ExtResource("4_rmcne")
-
-[node name="HealthLabel" type="Label" parent="CanvasLayer/UI"]
-layout_mode = 0
-offset_left = 22.0
-offset_top = 48.0
-offset_right = 67.0
-offset_bottom = 73.0
-text = "HEALTH"
-label_settings = SubResource("LabelSettings_446a8")
-
 [node name="EnemyPanel" type="Panel" parent="CanvasLayer/UI"]
 layout_mode = 1
 anchors_preset = -1
@@ -539,33 +522,6 @@ text = "The portal has opened. Escape to the next level!
 "
 label_settings = SubResource("LabelSettings_446a8")
 
-[node name="ScoreProgressBar" type="TextureProgressBar" parent="CanvasLayer/UI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 895.0
-offset_top = -64.0
-offset_right = 1706.0
-offset_bottom = 920.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.25, 0.2)
-max_value = 0.0
-rounded = true
-texture_under = ExtResource("2_8khae")
-texture_over = ExtResource("3_oypmg")
-texture_progress = ExtResource("7_fy34i")
-
-[node name="ScoreLabel" type="Label" parent="CanvasLayer/UI"]
-layout_mode = 0
-offset_left = 926.0
-offset_top = 48.0
-offset_right = 971.0
-offset_bottom = 73.0
-text = "Score"
-label_settings = SubResource("LabelSettings_446a8")
-
 [node name="GameOverLabel" type="RichTextLabel" parent="CanvasLayer/UI"]
 layout_mode = 1
 anchors_preset = -1
@@ -573,10 +529,10 @@ anchor_left = -0.084
 anchor_top = 1.012
 anchor_right = 1.084
 anchor_bottom = 1.465
-offset_left = 0.268013
-offset_top = 0.223877
+offset_left = 0.267998
+offset_top = 0.223999
 offset_right = -0.268188
-offset_bottom = 0.508789
+offset_bottom = 0.508911
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("8_nhhtu")
@@ -633,6 +589,86 @@ layout_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_colxj")
 }
+
+[node name="ScoreControl" type="Control" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/UI/ScoreControl"]
+layout_mode = 0
+offset_left = 926.0
+offset_top = 48.0
+offset_right = 989.0
+offset_bottom = 73.0
+text = "Score"
+label_settings = SubResource("LabelSettings_0511y")
+
+[node name="VynilScore" type="TextureRect" parent="CanvasLayer/UI/ScoreControl"]
+layout_mode = 0
+offset_left = 859.0
+offset_top = 6.0
+offset_right = 899.0
+offset_bottom = 46.0
+texture = ExtResource("13_682tv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScoreProgressBar" type="TextureProgressBar" parent="CanvasLayer/UI/ScoreControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 895.0
+offset_top = -64.0
+offset_right = 1879.0
+offset_bottom = 920.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.2)
+max_value = 0.0
+rounded = true
+texture_under = ExtResource("2_8khae")
+texture_over = ExtResource("3_oypmg")
+texture_progress = ExtResource("7_fy34i")
+
+[node name="HealthControl" type="Control" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HealthProgressBar" type="TextureProgressBar" parent="CanvasLayer/UI/HealthControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -64.0
+offset_right = 810.0
+offset_bottom = 920.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.2)
+texture_under = ExtResource("2_8khae")
+texture_over = ExtResource("3_oypmg")
+texture_progress = ExtResource("4_rmcne")
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer/UI/HealthControl"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 48.0
+offset_right = 92.0
+offset_bottom = 73.0
+text = "HEALTH"
+label_settings = SubResource("LabelSettings_0511y")
 
 [node name="Fade" type="ColorRect" parent="CanvasLayer"]
 visible = false
@@ -715,10 +751,10 @@ bus = &"SFX"
 stream = ExtResource("24_8rlhw")
 bus = &"SFX"
 
-[connection signal="value_changed" from="CanvasLayer/UI/ScoreProgressBar" to="." method="_on_score_progress_bar_value_changed"]
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/AudioButton" to="." method="_on_audio_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="animation_finished" from="CanvasLayer/UI/UIAnimationPlayer" to="." method="_on_ui_animation_player_animation_finished"]
+[connection signal="value_changed" from="CanvasLayer/UI/ScoreControl/ScoreProgressBar" to="." method="_on_score_progress_bar_value_changed"]
 [connection signal="animation_finished" from="CanvasLayer/Fade/TransAnimationPlayer" to="." method="_on_trans_animation_player_animation_finished"]
 [connection signal="go_to_next_level" from="Player" to="." method="_on_player_go_to_next_level"]

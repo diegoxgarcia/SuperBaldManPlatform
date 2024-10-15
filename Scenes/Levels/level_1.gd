@@ -1,10 +1,10 @@
 class_name Level1
 extends Node2D
 
-@onready var health_progress_bar: TextureProgressBar = $CanvasLayer/UI/HealthProgressBar
+@onready var health_progress_bar: TextureProgressBar = $CanvasLayer/UI/HealthControl/HealthProgressBar
 @onready var defeated: Label = $CanvasLayer/UI/EnemyPanel/Defeated
 @onready var player: Player = $Player
-@onready var score_progress_bar = $CanvasLayer/UI/ScoreProgressBar
+@onready var score_progress_bar = $CanvasLayer/UI/ScoreControl/ScoreProgressBar
 @onready var tile_map_layer = $TileMapLayer
 @onready var portal = $Portal
 @onready var ui_animation_player = $CanvasLayer/UI/UIAnimationPlayer
