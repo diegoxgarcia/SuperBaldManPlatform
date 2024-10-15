@@ -15,7 +15,7 @@ var game_data = {
 func save_checkpoint_record(score : int, checkpoint : String):
 	game_data.score = score
 	game_data.checkpoint_level = checkpoint
-	save_data()
+	save_data(savefile, game_data)
 	pass
 	
 func get_next_level(level : String) -> String:
@@ -38,7 +38,9 @@ func dir_contents(path):
 			if dir.current_is_dir():
 				print("Found directory: " + file_name)
 			else:
-				if file_name.contains(".tscn"):
+				if file_name.contains(".tscn.remap"):
+					match_data.levels.append(file_name.replace(".tscn.remap", ""))
+				elif file_name.contains(".tscn"):
 					match_data.levels.append(file_name.replace(".tscn", ""))
 			file_name = dir.get_next()
 		match_data.levels.sort()
@@ -48,20 +50,20 @@ func dir_contents(path):
 func _ready():
 	match_data.player_health = 100
 	dir_contents(level_path)
-	load_data()
+	load_data(savefile)
 	pass
 
-func load_data():
-	var file = FileAccess.open(savefile, FileAccess.READ)
+func load_data(file_data : String):
+	var file = FileAccess.open(file_data, FileAccess.READ)
 	if file == null:
-		save_data()
+		save_data(file_data, game_data)
 	else:
 		game_data = file.get_var()
 	file = null
 	pass
 
-func save_data():
-	var file = FileAccess.open(savefile,FileAccess.WRITE)
-	file.store_var(game_data)
+func save_data(file_data : String, data):
+	var file = FileAccess.open(file_data,FileAccess.WRITE)
+	file.store_var(data)
 	file = null
 	pass

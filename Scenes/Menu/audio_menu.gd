@@ -13,7 +13,7 @@ func _process(delta):
 func _on_back_button_pressed():
 	self.hide()
 	vbox_aux.show()
-	GameManager.save_data()
+	GameManager.save_data(GameManager.savefile, GameManager.game_data)
 	pass
 	
 func show_and_hide(vbox : VBoxContainer):
