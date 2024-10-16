@@ -15,9 +15,11 @@ var level_score : int = 0
 @onready var audio_menu = $CanvasLayer/UI/AudioMenu
 @onready var music = $Music
 @onready var sfx = $SFX
+@onready var buttons = $CanvasLayer/UI/Buttons
 
 
 func _ready():
+	set_buttons()
 	health_progress_bar.value = player.player_data.health
 	score_progress_bar.value = level_score
 	player.update_match_data.connect(update_player_match_data)
@@ -29,6 +31,16 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		open_menu(false)
+	pass
+	
+func set_buttons():
+	match OS.get_name():
+		"Windows":
+			buttons.hide()
+		"macOS":
+			buttons.hide()
+		"Web":
+			buttons.show()	
 	pass
 	
 func open_menu(game_over : bool):
@@ -106,3 +118,33 @@ func _on_trans_animation_player_animation_finished(anim_name):
 func _on_audio_button_pressed():
 	audio_menu.show_and_hide(v_box_container)
 	pass
+
+func _on_jump_button_pressed():
+	if player.is_on_floor():
+		player.state_machine.current_state.transitioned.emit(player.state_machine.current_state, "jump")
+	pass
+
+func _on_attack_button_pressed():
+	if player.is_on_floor():
+		player.state_machine.current_state.transitioned.emit(player.state_machine.current_state, "attack")
+	pass
+
+func _on_options_button_pressed():
+	open_menu(false)
+	pass
+
+func _on_left_button_button_up():
+	Input.action_release("move_left")
+	pass
+
+func _on_left_button_button_down():
+	Input.action_press("move_left")
+	pass
+
+func _on_right_button_button_down():
+	Input.action_press("move_right")
+	pass
+
+func _on_right_button_button_up():
+	Input.action_release("move_right")
+	pass 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://c73pdks3qx30x"]
+[gd_scene load_steps=46 format=4 uid="uid://c73pdks3qx30x"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/level_2.gd" id="1_d4kh4"]
 [ext_resource type="Texture2D" uid="uid://dwm41jj4lw7g6" path="res://Assets/Progress/BarSystem/BarBackground.png" id="2_8khae"]
@@ -19,12 +19,19 @@
 [ext_resource type="Texture2D" uid="uid://ckpc4eaewi1y1" path="res://Assets/Collectables/vinyl.png" id="13_682tv"]
 [ext_resource type="PackedScene" uid="uid://lsahto6ndb8i" path="res://Scenes/Collectables/portal.tscn" id="14_7b4cb"]
 [ext_resource type="PackedScene" uid="uid://b7hjstv7sifem" path="res://Scenes/Menu/audio_menu.tscn" id="16_0dths"]
+[ext_resource type="Texture2D" uid="uid://pe6xxs1kn258" path="res://Assets/Miscs/leftbutton.png" id="18_36jwn"]
 [ext_resource type="PackedScene" uid="uid://cajv8vgfny11m" path="res://Scenes/Characters/pea_monster_enemy.tscn" id="18_t45gd"]
+[ext_resource type="Texture2D" uid="uid://cgyxchtrrqe2x" path="res://Assets/Miscs/leftbuttonpressed.png" id="19_enl45"]
 [ext_resource type="PackedScene" uid="uid://wvuen8h80w5a" path="res://Scenes/Characters/monster_enemy.tscn" id="19_hm1v4"]
+[ext_resource type="Texture2D" uid="uid://bdq23t71ud1fg" path="res://Assets/Miscs/rightbutton.png" id="20_awu5s"]
 [ext_resource type="AudioStream" uid="uid://h0gw0jbudstu" path="res://Assets/Music/Level2.mp3" id="21_3pn4a"]
+[ext_resource type="Texture2D" uid="uid://drq5is5g5u1r7" path="res://Assets/Miscs/rightbuttonpressed.png" id="21_ow141"]
+[ext_resource type="Texture2D" uid="uid://btapa7bb15m0x" path="res://Assets/Miscs/button_a.png" id="22_7qysl"]
 [ext_resource type="AudioStream" uid="uid://bj257vlsatu5d" path="res://Assets/Music/For Fun (DJ Cod Mix) - Portal Final.mp3" id="22_7tinv"]
+[ext_resource type="Texture2D" uid="uid://colf83ad3cpr5" path="res://Assets/Miscs/button_x.png" id="23_c50w6"]
 [ext_resource type="AudioStream" uid="uid://tmukw30v6w16" path="res://Assets/SFX/youloose.wav" id="23_dd4ma"]
 [ext_resource type="AudioStream" uid="uid://cccs2iosd0ddv" path="res://Assets/SFX/portal.wav" id="24_8rlhw"]
+[ext_resource type="Texture2D" uid="uid://ca31h3jnc32e6" path="res://Assets/GUI/white_config.png" id="24_uvgk6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k1i0b"]
 texture = ExtResource("3_hyig4")
@@ -670,6 +677,60 @@ offset_bottom = 73.0
 text = "HEALTH"
 label_settings = SubResource("LabelSettings_0511y")
 
+[node name="Buttons" type="Control" parent="CanvasLayer/UI"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LeftButton" type="TextureButton" parent="CanvasLayer/UI/Buttons"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 520.0
+offset_right = 129.0
+offset_bottom = 592.0
+texture_normal = ExtResource("18_36jwn")
+texture_pressed = ExtResource("19_enl45")
+
+[node name="RightButton" type="TextureButton" parent="CanvasLayer/UI/Buttons"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 520.0
+offset_right = 259.0
+offset_bottom = 592.0
+texture_normal = ExtResource("20_awu5s")
+texture_pressed = ExtResource("21_ow141")
+
+[node name="JumpButton" type="TextureButton" parent="CanvasLayer/UI/Buttons"]
+layout_mode = 0
+offset_left = 920.0
+offset_top = 520.0
+offset_right = 984.0
+offset_bottom = 584.0
+texture_normal = ExtResource("22_7qysl")
+
+[node name="AttackButton" type="TextureButton" parent="CanvasLayer/UI/Buttons"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 520.0
+offset_right = 1114.0
+offset_bottom = 584.0
+texture_normal = ExtResource("23_c50w6")
+
+[node name="OptionsButton" type="TextureButton" parent="CanvasLayer/UI/Buttons"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 400.0
+offset_right = 1150.0
+offset_bottom = 500.0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("24_uvgk6")
+stretch_mode = 5
+
 [node name="Fade" type="ColorRect" parent="CanvasLayer"]
 visible = false
 anchors_preset = 15
@@ -756,5 +817,12 @@ bus = &"SFX"
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="animation_finished" from="CanvasLayer/UI/UIAnimationPlayer" to="." method="_on_ui_animation_player_animation_finished"]
 [connection signal="value_changed" from="CanvasLayer/UI/ScoreControl/ScoreProgressBar" to="." method="_on_score_progress_bar_value_changed"]
+[connection signal="button_down" from="CanvasLayer/UI/Buttons/LeftButton" to="." method="_on_left_button_button_down"]
+[connection signal="button_up" from="CanvasLayer/UI/Buttons/LeftButton" to="." method="_on_left_button_button_up"]
+[connection signal="button_down" from="CanvasLayer/UI/Buttons/RightButton" to="." method="_on_right_button_button_down"]
+[connection signal="button_up" from="CanvasLayer/UI/Buttons/RightButton" to="." method="_on_right_button_button_up"]
+[connection signal="pressed" from="CanvasLayer/UI/Buttons/JumpButton" to="." method="_on_jump_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Buttons/AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Buttons/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="animation_finished" from="CanvasLayer/Fade/TransAnimationPlayer" to="." method="_on_trans_animation_player_animation_finished"]
 [connection signal="go_to_next_level" from="Player" to="." method="_on_player_go_to_next_level"]

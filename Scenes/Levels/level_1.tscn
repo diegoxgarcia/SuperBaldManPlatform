@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://b434sj85aqidb"]
+[gd_scene load_steps=45 format=4 uid="uid://b434sj85aqidb"]
 
 [ext_resource type="Texture2D" uid="uid://cmyxu37qdio6w" path="res://Assets/TileSet/Background.png" id="1_cnyd1"]
 [ext_resource type="PackedScene" uid="uid://cxhdamhyb8gxs" path="res://Scenes/Characters/player.tscn" id="1_gbdjr"]
@@ -21,10 +21,17 @@
 [ext_resource type="Texture2D" uid="uid://bfpafwmhvimob" path="res://Assets/GUI/white_musicOn.png" id="14_kf0d7"]
 [ext_resource type="Texture2D" uid="uid://b07e0psn40c5l" path="res://Assets/GUI/white_home.png" id="15_xdfxl"]
 [ext_resource type="PackedScene" uid="uid://b7hjstv7sifem" path="res://Scenes/Menu/audio_menu.tscn" id="16_rwobj"]
+[ext_resource type="Texture2D" uid="uid://pe6xxs1kn258" path="res://Assets/Miscs/leftbutton.png" id="18_5ij2j"]
+[ext_resource type="Texture2D" uid="uid://cgyxchtrrqe2x" path="res://Assets/Miscs/leftbuttonpressed.png" id="19_tmrn8"]
+[ext_resource type="Texture2D" uid="uid://bdq23t71ud1fg" path="res://Assets/Miscs/rightbutton.png" id="20_aisla"]
+[ext_resource type="Texture2D" uid="uid://drq5is5g5u1r7" path="res://Assets/Miscs/rightbuttonpressed.png" id="21_kq6ue"]
 [ext_resource type="AudioStream" uid="uid://c7l4kfsf0y0r1" path="res://Assets/Music/Level1.mp3" id="21_mq5ql"]
+[ext_resource type="Texture2D" uid="uid://btapa7bb15m0x" path="res://Assets/Miscs/button_a.png" id="22_bcnx2"]
 [ext_resource type="AudioStream" uid="uid://da0dntemwau56" path="res://Assets/Music/Portal Theme.mp3" id="22_hfitx"]
+[ext_resource type="Texture2D" uid="uid://colf83ad3cpr5" path="res://Assets/Miscs/button_x.png" id="23_0cydx"]
 [ext_resource type="AudioStream" uid="uid://tmukw30v6w16" path="res://Assets/SFX/youloose.wav" id="23_h12il"]
 [ext_resource type="AudioStream" uid="uid://cccs2iosd0ddv" path="res://Assets/SFX/portal.wav" id="24_2fr88"]
+[ext_resource type="Texture2D" uid="uid://ca31h3jnc32e6" path="res://Assets/GUI/white_config.png" id="24_seyrv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdfml"]
 texture = ExtResource("2_vss5e")
@@ -617,6 +624,60 @@ offset_bottom = 73.0
 text = "HEALTH"
 label_settings = SubResource("LabelSettings_7mxvr")
 
+[node name="Buttons" type="Control" parent="CanvasLayer/UI"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LeftButton" type="TextureButton" parent="CanvasLayer/UI/Buttons"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 520.0
+offset_right = 129.0
+offset_bottom = 592.0
+texture_normal = ExtResource("18_5ij2j")
+texture_pressed = ExtResource("19_tmrn8")
+
+[node name="RightButton" type="TextureButton" parent="CanvasLayer/UI/Buttons"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 520.0
+offset_right = 259.0
+offset_bottom = 592.0
+texture_normal = ExtResource("20_aisla")
+texture_pressed = ExtResource("21_kq6ue")
+
+[node name="JumpButton" type="TextureButton" parent="CanvasLayer/UI/Buttons"]
+layout_mode = 0
+offset_left = 920.0
+offset_top = 520.0
+offset_right = 984.0
+offset_bottom = 584.0
+texture_normal = ExtResource("22_bcnx2")
+
+[node name="AttackButton" type="TextureButton" parent="CanvasLayer/UI/Buttons"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 520.0
+offset_right = 1114.0
+offset_bottom = 584.0
+texture_normal = ExtResource("23_0cydx")
+
+[node name="OptionsButton" type="TextureButton" parent="CanvasLayer/UI/Buttons"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 400.0
+offset_right = 1150.0
+offset_bottom = 500.0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("24_seyrv")
+stretch_mode = 5
+
 [node name="Fade" type="ColorRect" parent="CanvasLayer"]
 visible = false
 anchors_preset = 15
@@ -694,5 +755,12 @@ bus = &"SFX"
 [connection signal="pressed" from="CanvasLayer/UI/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="animation_finished" from="CanvasLayer/UI/UIAnimationPlayer" to="." method="_on_ui_animation_player_animation_finished"]
 [connection signal="value_changed" from="CanvasLayer/UI/ScoreControl/ScoreProgressBar" to="." method="_on_score_progress_bar_value_changed"]
+[connection signal="button_down" from="CanvasLayer/UI/Buttons/LeftButton" to="." method="_on_left_button_button_down"]
+[connection signal="button_up" from="CanvasLayer/UI/Buttons/LeftButton" to="." method="_on_left_button_button_up"]
+[connection signal="button_down" from="CanvasLayer/UI/Buttons/RightButton" to="." method="_on_right_button_button_down"]
+[connection signal="button_up" from="CanvasLayer/UI/Buttons/RightButton" to="." method="_on_right_button_button_up"]
+[connection signal="pressed" from="CanvasLayer/UI/Buttons/JumpButton" to="." method="_on_jump_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Buttons/AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Buttons/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="animation_finished" from="CanvasLayer/Fade/TransAnimationPlayer" to="." method="_on_trans_animation_player_animation_finished"]
 [connection signal="go_to_next_level" from="Player" to="." method="_on_player_go_to_next_level"]
