@@ -10,7 +10,7 @@ func physics_update(delta : float):
 	if Input.is_action_just_pressed("jump"):
 		transitioned.emit(self, "jump")
 	if Input.is_action_just_pressed("attack"):
-		transitioned.emit(self, "attack")
+		transitioned.emit(self, "attack") 
 	if direction:
 		change_direction_velocity(player, delta, direction)
 	else: 
