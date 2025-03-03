@@ -105,7 +105,6 @@ func _on_player_go_to_next_level():
 	trans_animation_player.play("fade_in")
 	pass
 
-
 func _on_trans_animation_player_animation_finished(anim_name):
 	match anim_name:
 		"fade_in":
@@ -113,7 +112,6 @@ func _on_trans_animation_player_animation_finished(anim_name):
 			GameManager.save_checkpoint_record(GameManager.match_data.collectables_taken, next_level)
 			get_tree().change_scene_to_file(next_level)
 	pass 
-
 
 func _on_audio_button_pressed():
 	audio_menu.show_and_hide(v_box_container)
