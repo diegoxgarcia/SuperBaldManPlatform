@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://lsahto6ndb8i"]
 
 [ext_resource type="Texture2D" uid="uid://duufmt1hic2o7" path="res://Assets/Particles/21 000i InStarOutArea1Infinity.png" id="1_edpmb"]
-[ext_resource type="Script" path="res://Scenes/Collectables/portal.gd" id="1_inpme"]
+[ext_resource type="Script" uid="uid://d2ieyhfsnva3e" path="res://Scenes/Collectables/portal.gd" id="1_inpme"]
 [ext_resource type="Texture2D" uid="uid://buh3risy4kkbv" path="res://Assets/Particles/flare_0.png" id="2_hqx8b"]
 [ext_resource type="PackedScene" uid="uid://cspmkebjhena7" path="res://Scenes/Particles/gpu_particles_2d.tscn" id="3_hl5gw"]
 

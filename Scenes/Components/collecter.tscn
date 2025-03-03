@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cjx4mqq877q68"]
 
-[ext_resource type="Script" path="res://Scenes/Components/collecter.gd" id="1_7ec34"]
+[ext_resource type="Script" uid="uid://hkib4p3erd4a" path="res://Scenes/Components/collecter.gd" id="1_7ec34"]
 
 [node name="Collecter" type="Area2D"]
 script = ExtResource("1_7ec34")

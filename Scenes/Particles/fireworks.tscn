@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://sru2q4xkeoce"]
 
-[ext_resource type="Script" path="res://Scenes/Particles/fireworks_2d.gd" id="1_uowiv"]
+[ext_resource type="Script" uid="uid://cxqmnlcq8upj5" path="res://Scenes/Particles/fireworks_2d.gd" id="1_uowiv"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p677n"]
 blend_mode = 1

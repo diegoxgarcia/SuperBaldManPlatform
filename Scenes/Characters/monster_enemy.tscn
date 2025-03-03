@@ -1,8 +1,8 @@
 [gd_scene load_steps=22 format=3 uid="uid://wvuen8h80w5a"]
 
-[ext_resource type="Script" path="res://Scenes/Characters/monster_enemy.gd" id="1_ltvid"]
+[ext_resource type="Script" uid="uid://dximu8qsvbhpb" path="res://Scenes/Characters/monster_enemy.gd" id="1_ltvid"]
 [ext_resource type="Texture2D" uid="uid://y051edi3d8pt" path="res://Assets/Enemies/Monster/got hit/frame-1.png" id="1_q3duu"]
-[ext_resource type="Script" path="res://Scenes/Resources/enemy_data.gd" id="2_52gay"]
+[ext_resource type="Script" uid="uid://c2y6m3yrvssnr" path="res://Scenes/Resources/enemy_data.gd" id="2_52gay"]
 [ext_resource type="Texture2D" uid="uid://dadr5lqge0dcd" path="res://Assets/Enemies/Monster/got hit/frame-2.png" id="2_xw54l"]
 [ext_resource type="Texture2D" uid="uid://ex08w3eyfty2" path="res://Assets/Enemies/Monster/Idle/frame-1.png" id="3_y5upy"]
 [ext_resource type="Texture2D" uid="uid://b2gkhl0eqh1mf" path="res://Assets/Enemies/Monster/Idle/frame-2.png" id="4_dtj2o"]
@@ -169,9 +169,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l1tuw"]
 _data = {
-"RESET": SubResource("Animation_hiny1"),
-"hit_back": SubResource("Animation_i0f16"),
-"hit_back_backwards": SubResource("Animation_bs87b")
+&"RESET": SubResource("Animation_hiny1"),
+&"hit_back": SubResource("Animation_i0f16"),
+&"hit_back_backwards": SubResource("Animation_bs87b")
 }
 
 [sub_resource type="Gradient" id="Gradient_8m7vf"]

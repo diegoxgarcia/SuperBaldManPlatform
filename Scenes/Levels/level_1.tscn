@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cmyxu37qdio6w" path="res://Assets/TileSet/Background.png" id="1_cnyd1"]
 [ext_resource type="PackedScene" uid="uid://cxhdamhyb8gxs" path="res://Scenes/Characters/player.tscn" id="1_gbdjr"]
-[ext_resource type="Script" path="res://Scenes/Levels/level_1.gd" id="1_ygtmi"]
+[ext_resource type="Script" uid="uid://cfwjnm1vw5wa8" path="res://Scenes/Levels/level_1.gd" id="1_ygtmi"]
 [ext_resource type="Texture2D" uid="uid://cjfjlq7dlbn03" path="res://Assets/TileSet/_Spritesheet.png" id="2_vss5e"]
 [ext_resource type="PackedScene" uid="uid://cajv8vgfny11m" path="res://Scenes/Characters/pea_monster_enemy.tscn" id="2_yopk8"]
 [ext_resource type="PackedScene" uid="uid://wvuen8h80w5a" path="res://Scenes/Characters/monster_enemy.tscn" id="3_0owa6"]
@@ -249,8 +249,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_colxj"]
 _data = {
-"RESET": SubResource("Animation_q6egx"),
-"game_over": SubResource("Animation_ewu7r")
+&"RESET": SubResource("Animation_q6egx"),
+&"game_over": SubResource("Animation_ewu7r")
 }
 
 [sub_resource type="Animation" id="Animation_2i67l"]
@@ -372,9 +372,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h7s3d"]
 _data = {
-"RESET": SubResource("Animation_2i67l"),
-"fade_in": SubResource("Animation_arqx6"),
-"fade_out": SubResource("Animation_7p7r1")
+&"RESET": SubResource("Animation_2i67l"),
+&"fade_in": SubResource("Animation_arqx6"),
+&"fade_out": SubResource("Animation_7p7r1")
 }
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_ne1h2"]

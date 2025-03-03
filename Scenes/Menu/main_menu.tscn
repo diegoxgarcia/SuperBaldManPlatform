@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cco6yvch0b6h6"]
 
-[ext_resource type="Script" path="res://Scenes/Menu/main_menu.gd" id="1_3htgi"]
+[ext_resource type="Script" uid="uid://cxrkxb68uhlqa" path="res://Scenes/Menu/main_menu.gd" id="1_3htgi"]
 [ext_resource type="FontFile" uid="uid://cywvmrrjs6omw" path="res://Assets/Fonts/kenvector_future.ttf" id="2_k5k7n"]
 [ext_resource type="FontFile" uid="uid://cvxst13mrkt7b" path="res://Assets/Fonts/kenpixel_future_square.ttf" id="3_lhmpw"]
 [ext_resource type="Texture2D" uid="uid://pgp00s8jd775" path="res://Assets/MenuResources/superbaldman.jpeg" id="4_r6ot7"]
@@ -100,8 +100,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ifnvk"]
 _data = {
-"RESET": SubResource("Animation_fe0i5"),
-"title_anim": SubResource("Animation_wpb8a")
+&"RESET": SubResource("Animation_fe0i5"),
+&"title_anim": SubResource("Animation_wpb8a")
 }
 
 [node name="MainMenu" type="Control"]

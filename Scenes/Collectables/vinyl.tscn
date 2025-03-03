@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dnud618xbw41l"]
 
 [ext_resource type="Texture2D" uid="uid://ckpc4eaewi1y1" path="res://Assets/Collectables/vinyl.png" id="1_ct7f0"]
-[ext_resource type="Script" path="res://Scenes/Collectables/vinyl.gd" id="1_d6c8t"]
+[ext_resource type="Script" uid="uid://c4v0sgdhq1l4p" path="res://Scenes/Collectables/vinyl.gd" id="1_d6c8t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gklgo"]
 radius = 300.0
@@ -40,8 +40,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0emxn"]
 _data = {
-"RESET": SubResource("Animation_xuw5y"),
-"spin": SubResource("Animation_o1jwq")
+&"RESET": SubResource("Animation_xuw5y"),
+&"spin": SubResource("Animation_o1jwq")
 }
 
 [node name="Vinyl" type="Area2D" groups=["Collectibles"]]

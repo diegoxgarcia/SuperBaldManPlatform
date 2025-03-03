@@ -1,8 +1,8 @@
 [gd_scene load_steps=38 format=3 uid="uid://cajv8vgfny11m"]
 
-[ext_resource type="Script" path="res://Scenes/Characters/pea_monster_enemy.gd" id="1_pq8mr"]
+[ext_resource type="Script" uid="uid://bgu1gr14ttm5d" path="res://Scenes/Characters/pea_monster_enemy.gd" id="1_pq8mr"]
 [ext_resource type="Texture2D" uid="uid://bxbriw2p6w01r" path="res://Assets/Enemies/PeaMonster/idle/frame-1.png" id="2_3hskw"]
-[ext_resource type="Script" path="res://Scenes/Resources/enemy_data.gd" id="2_y5h43"]
+[ext_resource type="Script" uid="uid://c2y6m3yrvssnr" path="res://Scenes/Resources/enemy_data.gd" id="2_y5h43"]
 [ext_resource type="Texture2D" uid="uid://balievt227clr" path="res://Assets/Enemies/PeaMonster/idle/frame-2.png" id="3_eub15"]
 [ext_resource type="Texture2D" uid="uid://vugomvmpkw8c" path="res://Assets/Enemies/PeaMonster/idle/frame-3.png" id="4_babvn"]
 [ext_resource type="Texture2D" uid="uid://c6qlrqh5xejdj" path="res://Assets/Enemies/PeaMonster/idle/frame-4.png" id="5_cdok1"]
@@ -253,14 +253,13 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7ua2t"]
 _data = {
-"RESET": SubResource("Animation_e7ncd"),
-"hit_rotate": SubResource("Animation_yrvd2"),
-"hit_rotate_backwards": SubResource("Animation_5khga")
+&"RESET": SubResource("Animation_e7ncd"),
+&"hit_rotate": SubResource("Animation_yrvd2"),
+&"hit_rotate_backwards": SubResource("Animation_5khga")
 }
 
 [sub_resource type="Curve" id="Curve_nptbx"]
-min_value = -360.0
-max_value = 360.0
+_limits = [-360.0, 360.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -275,7 +274,7 @@ colors = PackedColorArray(0, 1, 0, 1, 0.190476, 1, 0.190476, 1, 0.448718, 1, 0.4
 gradient = SubResource("Gradient_wdwrr")
 
 [sub_resource type="Curve" id="Curve_uitu5"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 

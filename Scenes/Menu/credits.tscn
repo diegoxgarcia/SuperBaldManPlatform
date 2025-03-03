@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://c4bpmr3x5tu34"]
 
-[ext_resource type="Script" path="res://Scenes/Menu/credits.gd" id="1_kqaeo"]
+[ext_resource type="Script" uid="uid://cmty5jjhf2yyt" path="res://Scenes/Menu/credits.gd" id="1_kqaeo"]
 [ext_resource type="FontFile" uid="uid://bfgv1ni2bb3w2" path="res://Assets/Fonts/kenpixel_blocks.ttf" id="1_kx2v6"]
 [ext_resource type="Texture2D" uid="uid://bxv78lkj0htn2" path="res://Assets/MenuResources/godot.webp" id="2_4ovw5"]
 [ext_resource type="AudioStream" uid="uid://7ufurpw3unbc" path="res://Assets/Music/RECOIL-Uranokemia_Shunt.mp3" id="3_1yjbn"]
@@ -74,8 +74,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jblbr"]
 _data = {
-"RESET": SubResource("Animation_ub1lm"),
-"slide_up_credits": SubResource("Animation_y6r7v")
+&"RESET": SubResource("Animation_ub1lm"),
+&"slide_up_credits": SubResource("Animation_y6r7v")
 }
 
 [node name="Credits" type="Control"]

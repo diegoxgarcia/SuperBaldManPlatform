@@ -1,6 +1,6 @@
 [gd_scene load_steps=46 format=4 uid="uid://c73pdks3qx30x"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/level_2.gd" id="1_d4kh4"]
+[ext_resource type="Script" uid="uid://bxdmtbtlutdf1" path="res://Scenes/Levels/level_2.gd" id="1_d4kh4"]
 [ext_resource type="Texture2D" uid="uid://dwm41jj4lw7g6" path="res://Assets/Progress/BarSystem/BarBackground.png" id="2_8khae"]
 [ext_resource type="Texture2D" uid="uid://c158grlenga1x" path="res://Assets/TileSet/Background2.png" id="2_c68o7"]
 [ext_resource type="Texture2D" uid="uid://dcbiygtmn04ef" path="res://Assets/TileSet/Spritesheet_tileset.png" id="3_hyig4"]
@@ -257,8 +257,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_colxj"]
 _data = {
-"RESET": SubResource("Animation_q6egx"),
-"game_over": SubResource("Animation_ewu7r")
+&"RESET": SubResource("Animation_q6egx"),
+&"game_over": SubResource("Animation_ewu7r")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_0511y"]
@@ -387,9 +387,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h7s3d"]
 _data = {
-"RESET": SubResource("Animation_2i67l"),
-"fade_in": SubResource("Animation_arqx6"),
-"fade_out": SubResource("Animation_7p7r1")
+&"RESET": SubResource("Animation_2i67l"),
+&"fade_in": SubResource("Animation_arqx6"),
+&"fade_out": SubResource("Animation_7p7r1")
 }
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_xv8na"]
@@ -402,7 +402,7 @@ clip_1/stream = ExtResource("22_7tinv")
 clip_1/auto_advance = 0
 _transitions = {
 Vector2i(0, 0): {
-"fade_beats": 1,
+"fade_beats": 1.0,
 "fade_mode": 4,
 "from_time": 0,
 "to_time": 1

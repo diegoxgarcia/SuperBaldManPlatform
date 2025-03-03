@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bov5uealh6dy4"]
 
 [ext_resource type="PackedScene" uid="uid://cxhdamhyb8gxs" path="res://Scenes/Characters/player.tscn" id="1_1nqa8"]
-[ext_resource type="Script" path="res://Test/characters_test.gd" id="1_o8smg"]
+[ext_resource type="Script" uid="uid://bt22o3p5i21es" path="res://Test/characters_test.gd" id="1_o8smg"]
 [ext_resource type="PackedScene" uid="uid://wvuen8h80w5a" path="res://Scenes/Characters/monster_enemy.tscn" id="2_swwnw"]
 [ext_resource type="PackedScene" uid="uid://cajv8vgfny11m" path="res://Scenes/Characters/pea_monster_enemy.tscn" id="3_agtcb"]
 [ext_resource type="PackedScene" uid="uid://dnud618xbw41l" path="res://Scenes/Collectables/vinyl.tscn" id="4_t1rc0"]

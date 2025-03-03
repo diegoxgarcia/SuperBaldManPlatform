@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://85wpovfy5xre"]
 
-[ext_resource type="Script" path="res://Scenes/Components/damager.gd" id="1_uf7v4"]
+[ext_resource type="Script" uid="uid://br5ek6oltm1sq" path="res://Scenes/Components/damager.gd" id="1_uf7v4"]
 
 [node name="Damager" type="Area2D"]
 collision_layer = 4

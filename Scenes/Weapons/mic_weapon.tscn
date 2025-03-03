@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://dqlucfqislgns"]
 
-[ext_resource type="Script" path="res://Scenes/Weapons/mic_weapon.gd" id="1_sflhn"]
+[ext_resource type="Script" uid="uid://6miasvxn4gvt" path="res://Scenes/Weapons/mic_weapon.gd" id="1_sflhn"]
 [ext_resource type="Texture2D" uid="uid://bumuqcll7eby7" path="res://Assets/Weapons/mic.png" id="2_bp361"]
-[ext_resource type="Script" path="res://Scenes/Resources/weapon_data.gd" id="2_phikc"]
+[ext_resource type="Script" uid="uid://cvscmcablkhs" path="res://Scenes/Resources/weapon_data.gd" id="2_phikc"]
 [ext_resource type="Texture2D" uid="uid://detudd0lf5ekv" path="res://Assets/Particles/PhysicalImpact01LtBlue 2.png" id="4_5ewu2"]
 
 [sub_resource type="Resource" id="Resource_rjnh5"]
@@ -146,8 +146,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x6trr"]
 _data = {
-"RESET": SubResource("Animation_de66e"),
-"attack": SubResource("Animation_whca4")
+&"RESET": SubResource("Animation_de66e"),
+&"attack": SubResource("Animation_whca4")
 }
 
 [node name="MicWeapon" type="Area2D" groups=["Weapons"]]
