@@ -57,5 +57,5 @@ shape = SubResource("CircleShape2D_gklgo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_0emxn")
+&"": SubResource("AnimationLibrary_0emxn")
 }

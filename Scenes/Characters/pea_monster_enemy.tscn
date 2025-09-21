@@ -324,15 +324,15 @@ debug_color = Color(0.972549, 0.133333, 0.0352941, 0.419608)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
 libraries = {
-"": SubResource("AnimationLibrary_7ua2t")
+&"": SubResource("AnimationLibrary_7ua2t")
 }
 
 [node name="DeadParticles" type="GPUParticles2D" parent="Visual"]
 emitting = false
 amount = 10000
-process_material = SubResource("ParticleProcessMaterial_fmiet")
 lifetime = 0.3
 one_shot = true
+process_material = SubResource("ParticleProcessMaterial_fmiet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tp81j")

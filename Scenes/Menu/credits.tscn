@@ -127,7 +127,7 @@ color_ramp = SubResource("Gradient_px41v")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_jblbr")
+&"": SubResource("AnimationLibrary_jblbr")
 }
 
 [node name="Music" type="AudioStreamPlayer" parent="."]

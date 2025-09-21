@@ -541,7 +541,7 @@ layout_mode = 1
 
 [node name="UIAnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI"]
 libraries = {
-"": SubResource("AnimationLibrary_colxj")
+&"": SubResource("AnimationLibrary_colxj")
 }
 
 [node name="ScoreControl" type="Control" parent="CanvasLayer/UI"]
@@ -690,7 +690,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="TransAnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Fade"]
 libraries = {
-"": SubResource("AnimationLibrary_h7s3d")
+&"": SubResource("AnimationLibrary_h7s3d")
 }
 autoplay = "fade_out"
 
